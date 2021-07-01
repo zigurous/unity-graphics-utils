@@ -23,23 +23,22 @@ namespace Zigurous.Graphics
         public void Apply()
         {
             MeshFilter filter = GetComponent<MeshFilter>();
-            filter.mesh = Create();
+
+            if (Application.isPlaying) {
+                filter.mesh = Create();
+            } else {
+                filter.sharedMesh = Create();
+            }
         }
 
         public Mesh Create()
         {
-            Mesh mesh = new Mesh();
+            Mesh mesh = CubeMesh.sharedMesh.Copy();
             mesh.name = "Cube-3";
             mesh.subMeshCount = 3;
-            mesh.vertices = CubeMesh.Vertices;
-            mesh.uv = CubeMesh.UVs;
             mesh.SetTriangles(Triangles_X, 0);
             mesh.SetTriangles(Triangles_Y, 1);
             mesh.SetTriangles(Triangles_Z, 2);
-            mesh.RecalculateBounds();
-            mesh.RecalculateNormals();
-            mesh.RecalculateTangents();
-            mesh.Optimize();
             return mesh;
         }
 

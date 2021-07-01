@@ -10,6 +10,28 @@ namespace Zigurous.Graphics
     [AddComponentMenu("Zigurous/Graphics/Cube Mesh")]
     public sealed class CubeMesh : MonoBehaviour
     {
+        private static Mesh _sharedMesh;
+        public static Mesh sharedMesh
+        {
+            get
+            {
+                if (_sharedMesh == null)
+                {
+                    GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+
+                    if (Application.isPlaying) {
+                        _sharedMesh = cube.GetComponent<MeshFilter>().mesh.Copy();
+                    } else {
+                        _sharedMesh = cube.GetComponent<MeshFilter>().sharedMesh.Copy();
+                    }
+
+                    DestroyImmediate(cube);
+                }
+
+                return _sharedMesh;
+            }
+        }
+
         public static readonly int[] Triangles = {
              0,  2,  3,
              0,  3,  1,
@@ -45,7 +67,7 @@ namespace Zigurous.Graphics
             Corners[6], Corners[4], Corners[2], Corners[0], // Right
         };
 
-        public static readonly Vector2[] UVs = {
+        public static readonly Vector2[] UV = {
             new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1), new Vector2(1, 1), // Front
             new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, 1), new Vector2(1, 1), // Back
             new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 0), new Vector2(1, 0), // Top
@@ -62,20 +84,18 @@ namespace Zigurous.Graphics
         public void Apply()
         {
             MeshFilter filter = GetComponent<MeshFilter>();
-            filter.mesh = Create();
+
+            if (Application.isPlaying) {
+                filter.mesh = Create();
+            } else {
+                filter.sharedMesh = Create();
+            }
         }
 
         public Mesh Create()
         {
-            Mesh mesh = new Mesh();
+            Mesh mesh = CubeMesh.sharedMesh.Copy();
             mesh.name = "Cube";
-            mesh.vertices = Vertices;
-            mesh.triangles = Triangles;
-            mesh.uv = UVs;
-            mesh.RecalculateBounds();
-            mesh.RecalculateNormals();
-            mesh.RecalculateTangents();
-            mesh.Optimize();
             return mesh;
         }
 
