@@ -5,14 +5,6 @@ namespace Zigurous.Graphics
 {
     public static class MaterialExtensions
     {
-        public enum RenderingMode
-        {
-            Opaque,
-            Cutout,
-            Fade,
-            Transparent,
-        }
-
         public static RenderingMode GetRenderingMode(this Material material)
         {
             int renderingMode = (int)material.GetFloat(Identifier.Mode);
@@ -35,6 +27,7 @@ namespace Zigurous.Graphics
             switch (renderingMode)
             {
                 case RenderingMode.Opaque:
+                    material.SetOverrideTag("RenderType", "");
                     material.SetFloat(Identifier.Mode, 0);
                     material.SetInt(Identifier.SrcBlend, (int)BlendMode.One);
                     material.SetInt(Identifier.DstBlend, (int)BlendMode.Zero);
@@ -46,6 +39,7 @@ namespace Zigurous.Graphics
                     break;
 
                 case RenderingMode.Cutout:
+                    material.SetOverrideTag("RenderType", "TransparentCutout");
                     material.SetFloat(Identifier.Mode, 1);
                     material.SetInt(Identifier.SrcBlend, (int)BlendMode.One);
                     material.SetInt(Identifier.DstBlend, (int)BlendMode.Zero);
@@ -57,6 +51,7 @@ namespace Zigurous.Graphics
                     break;
 
                 case RenderingMode.Fade:
+                    material.SetOverrideTag("RenderType", "Transparent");
                     material.SetFloat(Identifier.Mode, 2);
                     material.SetInt(Identifier.SrcBlend, (int)BlendMode.SrcAlpha);
                     material.SetInt(Identifier.DstBlend, (int)BlendMode.OneMinusSrcAlpha);
@@ -68,6 +63,7 @@ namespace Zigurous.Graphics
                     break;
 
                 case RenderingMode.Transparent:
+                    material.SetOverrideTag("RenderType", "Transparent");
                     material.SetFloat(Identifier.Mode, 3);
                     material.SetInt(Identifier.SrcBlend, (int)BlendMode.One);
                     material.SetInt(Identifier.DstBlend, (int)BlendMode.OneMinusSrcAlpha);
