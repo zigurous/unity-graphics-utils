@@ -1,0 +1,15 @@
+{
+    "name": "Zigurous.Graphics.Editor",
+    "references": [
+        "GUID:e24a2ca8e3a1119408653f94f3047150"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
