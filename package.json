@@ -1,10 +1,10 @@
 {
-  "name": "com.zigurous.template",
+  "name": "com.zigurous.graphics",
   "version": "0.1.0",
-  "displayName": "Zigurous Template",
-  "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  "displayName": "Zigurous Graphics Utils",
+  "description": "The Graphics Utils package provides scripts and utilities for graphics and rendering purposes in Unity projects.",
   "unity": "2019.4",
-  "repository": "https://github.com/zigurous/unity-package-template",
+  "repository": "https://github.com/zigurous/unity-graphics-utils",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@zigurous"
   },
