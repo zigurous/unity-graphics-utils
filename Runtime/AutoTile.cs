@@ -128,7 +128,7 @@ namespace Zigurous.Graphics
 
         private void LateUpdate()
         {
-            if (this.transform.hasChanged)
+            if (this.autoUpdate && this.transform.hasChanged)
             {
                 Tile();
                 this.transform.hasChanged = false;
