@@ -1,4 +1,4 @@
-﻿#if UNITY_EDITOR
+#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -52,10 +52,11 @@ namespace Zigurous.Graphics
             public int submeshIndex = 0;
 
             /// <summary>
-            /// The base texture scale. For example, planes have a scale of 10.
+            /// The object's base unit scale. For example, planes have a unit
+            /// scale of 10 compared to most other primitives.
             /// </summary>
-            [Tooltip("The base texture scale. For example, planes have a scale of 10.")]
-            public Vector2 baseScale = Vector2.one;
+            [Tooltip("The object's base unit scale. For example, planes have a unit scale of 10 compared to most other primitives.")]
+            public Vector3 unitScale = Vector3.one;
 
             /// <summary>
             /// The texture offset applied on the material.
@@ -213,7 +214,7 @@ namespace Zigurous.Graphics
                 return;
             }
 
-            Vector2 textureScale = GetTextureScale(submesh.axis, Vector3.one);
+            Vector2 textureScale = GetTextureScale(submesh.axis, submesh.unitScale);
             Vector2 textureOffset = submesh.textureOffset;
 
             for (int i = 0; i < this.textureNames.Length; i++)
