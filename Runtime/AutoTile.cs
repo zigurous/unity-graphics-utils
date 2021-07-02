@@ -1,5 +1,6 @@
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
 using UnityEditor;
+using UnityEditor.Experimental.SceneManagement;
 #endif
 using UnityEngine;
 
@@ -138,7 +139,7 @@ namespace Zigurous.Graphics
         public void Tile()
         {
             #if UNITY_EDITOR
-            if (PrefabUtility.IsPartOfPrefabAsset(this)) {
+            if (PrefabUtility.IsPartOfPrefabAsset(this) || PrefabStageUtility.GetCurrentPrefabStage() != null) {
                 return;
             }
             #endif
