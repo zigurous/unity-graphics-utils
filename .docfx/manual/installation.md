@@ -1,8 +1,4 @@
-# Graphics Utils
-
-The Graphics Utils package provides scripts and utilities for graphics and rendering purposes in Unity projects.
-
-## Installation
+# Installation
 
 Use the Unity [Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) to install the Graphics Utils package.
 
@@ -27,3 +23,9 @@ Import the package namespace in each script you want to use it. You may need to 
 ```csharp
 using Zigurous.Graphics;
 ```
+
+### Source Code
+
+The source code for the Graphics Utils package is in the following repository:
+
+- https://github.com/zigurous/unity-graphics-utils
