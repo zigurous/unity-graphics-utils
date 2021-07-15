@@ -1,6 +1,6 @@
 # Graphics Utils
 
-The Graphics Utils package provides scripts and utilities for graphics and rendering purposes in Unity projects.
+The Graphics Utils package provides scripts and utilities for graphics and rendering purposes in Unity projects. The package is still early in development, and more functionality will be added over time.
 
 ## Installation
 
@@ -29,3 +29,9 @@ Import the package namespace in each script or file you want to use it.
 ```csharp
 using Zigurous.Graphics;
 ```
+
+## Reference
+
+- [Meshes](https://docs.zigurous.com/com.zigurous.graphics/manual/meshes.html)
+- [Identifiers](https://docs.zigurous.com/com.zigurous.graphics/manual/identifiers.html)
+- [Auto Tiling](https://docs.zigurous.com/com.zigurous.graphics/manual/tiling.html)
