@@ -9,8 +9,6 @@ namespace Zigurous.Graphics
     [System.Serializable]
     public struct ShaderProperty
     {
-        [SerializeField]
-        [HideInInspector]
         private int _id;
 
         /// <summary>
