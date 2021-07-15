@@ -60,6 +60,12 @@ namespace Zigurous.Graphics
         /// <param name="name">The name of the shader property.</param>
         public static implicit operator ShaderProperty(string name) => new ShaderProperty(name);
 
+        /// <summary>
+        /// Implicitly converts a shader property to an id.
+        /// </summary>
+        /// <param name="property">The shader property to convert to an id.</param>
+        public static implicit operator int(ShaderProperty property) => property.id;
+
     }
 
 }
