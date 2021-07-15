@@ -1,5 +1,6 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 namespace Zigurous.Graphics
@@ -54,6 +55,7 @@ namespace Zigurous.Graphics
         /// </summary>
         public void Save()
         {
+            #if UNITY_EDITOR
             MeshFilter filter = GetComponent<MeshFilter>();
 
             if (filter.mesh != null)
@@ -64,9 +66,9 @@ namespace Zigurous.Graphics
                     AssetDatabase.CreateAsset(filter.mesh, "Assets/" + filter.mesh.name + ".mesh");
                 }
             }
+            #endif
         }
 
     }
 
 }
-#endif
