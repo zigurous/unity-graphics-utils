@@ -49,6 +49,9 @@ namespace Zigurous.Graphics
             }
         }
 
+        /// <summary>
+        /// Saves the mesh to a project asset.
+        /// </summary>
         public void Save()
         {
             MeshFilter filter = GetComponent<MeshFilter>();

@@ -45,14 +45,19 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Constructs a new shader property with the given name.
+        /// Creates a new shader property with the given name.
         /// </summary>
+        /// <param name="name">The name of the shader property.</param>
         public ShaderProperty(string name)
         {
             _name = name;
             _id = Shader.PropertyToID(name);
         }
 
+        /// <summary>
+        /// Implicitly converts a name to a shader property.
+        /// </summary>
+        /// <param name="name">The name of the shader property.</param>
         public static implicit operator ShaderProperty(string name) => new ShaderProperty(name);
 
     }

@@ -2,8 +2,15 @@
 
 namespace Zigurous.Graphics
 {
+    /// <summary>
+    /// Extension methods for meshes.
+    /// </summary>
     public static class MeshExtensions
     {
+        /// <summary>
+        /// Returns a new copy of the mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh to copy.</param>
         public static Mesh Copy(this Mesh mesh)
         {
             Mesh copy = new Mesh();
@@ -34,11 +41,19 @@ namespace Zigurous.Graphics
             return copy;
         }
 
+        /// <summary>
+        /// Inverts the normals of the mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh to invert.</param>
         public static void InvertNormals(this Mesh mesh)
         {
             mesh.normals = mesh.InvertedNormals();
         }
 
+        /// <summary>
+        /// Returns an array of inverted normals of the mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh to get the inverted normals from.</param>
         public static Vector3[] InvertedNormals(this Mesh mesh)
         {
             Vector3[] normals = mesh.normals;
@@ -50,6 +65,11 @@ namespace Zigurous.Graphics
             return normals;
         }
 
+        /// <summary>
+        /// Inverts the triangles of the mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh to invert.</param>
+        /// <param name="calculateBounds">Recalculates the bounds of the mesh after inversion.</param>
         public static void InvertTriangles(this Mesh mesh, bool calculateBounds = false)
         {
             for (int m = 0; m < mesh.subMeshCount; m++) {
@@ -57,6 +77,10 @@ namespace Zigurous.Graphics
             }
         }
 
+        /// <summary>
+        /// Returns an array of inverted triangles of the mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh to get the inverted triangles from.</param>
         public static int[] InvertedTriangles(this Mesh mesh)
         {
             int[] triangles = mesh.triangles;
@@ -71,6 +95,11 @@ namespace Zigurous.Graphics
             return triangles;
         }
 
+        /// <summary>
+        /// Returns an array of inverted triangles of a submesh of the mesh.
+        /// </summary>
+        /// <param name="mesh">The mesh to get the inverted triangles from.</param>
+        /// <param name="submesh">The submesh index.</param>
         public static int[] InvertedTriangles(this Mesh mesh, int submesh)
         {
             int[] triangles = mesh.GetTriangles(submesh);

@@ -19,11 +19,34 @@ namespace Zigurous.Graphics
         /// </summary>
         public enum Axis
         {
+            /// <summary>
+            /// Tiles an object along the x-axis in the positive direction.
+            /// </summary>
             [InspectorName("X+")] X_Pos,
+
+            /// <summary>
+            /// Tiles an object along the x-axis in the negative direction.
+            /// </summary>
             [InspectorName("X-")] X_Neg,
+
+            /// <summary>
+            /// Tiles an object along the y-axis in the positive direction.
+            /// </summary>
             [InspectorName("Y+")] Y_Pos,
+
+            /// <summary>
+            /// Tiles an object along the y-axis in the negative direction.
+            /// </summary>
             [InspectorName("Y-")] Y_Neg,
+
+            /// <summary>
+            /// Tiles an object along the z-axis in the positive direction.
+            /// </summary>
             [InspectorName("Z+")] Z_Pos,
+
+            /// <summary>
+            /// Tiles an object along the z-axis in the negative direction.
+            /// </summary>
             [InspectorName("Z-")] Z_Neg,
         }
 
@@ -136,6 +159,10 @@ namespace Zigurous.Graphics
             }
         }
 
+        /// <summary>
+        /// Updates the tiling properties of the material(s) based on the
+        /// current scale of the object.
+        /// </summary>
         public void Tile()
         {
             #if UNITY_EDITOR

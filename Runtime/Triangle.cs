@@ -11,55 +11,123 @@ namespace Zigurous.Graphics
     {
         #pragma warning disable 649 // disable unassigned variable warning
 
-        public Vector3 a;
-        public Vector3 b;
-        public Vector3 c;
+        /// <summary>
+        /// The first vertex of the triangle.
+        /// </summary>
+        public Vector3 v1;
 
-        public Vector3 this[int i]
+        /// <summary>
+        /// The second vertex of the triangle.
+        /// </summary>
+        public Vector3 v2;
+
+        /// <summary>
+        /// The third vertex of the triangle.
+        /// </summary>
+        public Vector3 v3;
+
+        /// <summary>
+        /// Creates a new triangle with the specified verticies.
+        /// </summary>
+        /// <param name="v1">The first vertex of the triangle.</param>
+        /// <param name="v2">The second vertex of the triangle.</param>
+        /// <param name="v3">The third vertex of the triangle.</param>
+        public Triangle(Vector3 v1, Vector3 v2, Vector3 v3)
+        {
+            this.v1 = v1;
+            this.v2 = v2;
+            this.v3 = v3;
+        }
+
+        /// <summary>
+        /// Gets or sets a vertex of the triangle at the given
+        /// <paramref name="index"/>.
+        /// </summary>
+        /// <param name="index">The index of the vertex.</param>
+        public Vector3 this[int index]
         {
             get
             {
-                switch (i)
+                switch (index)
                 {
-                    case 0:
-                        return a;
-                    case 1:
-                        return b;
-                    default:
-                        return c;
+                    case 0: return v1;
+                    case 1: return v2;
+                    case 2: return v3;
+                    default: return Vector3.zero;
+                }
+            }
+            set
+            {
+                switch (index)
+                {
+                    case 0: v1 = value; break;
+                    case 1: v2 = value; break;
+                    case 2: v3 = value; break;
+                    default: break;
                 }
             }
         }
 
+        /// <summary>
+        /// Determines if the triangle is equal to <paramref name="other"/>.
+        /// </summary>
+        /// <param name="other">The triangle to compare to.</param>
         public bool Equals(Triangle other)
         {
-            return this.a == other.a &&
-                   this.b == other.b &&
-                   this.c == other.c;
+            return this.v1 == other.v1 &&
+                   this.v2 == other.v2 &&
+                   this.v3 == other.v3;
         }
 
-        public override bool Equals(object obj)
+        /// <summary>
+        /// Determines if the triangle is equal to <paramref name="other"/>.
+        /// </summary>
+        /// <param name="other">The object to compare to.</param>
+        public override bool Equals(object other)
         {
-            if (obj is Triangle triangle) {
+            if (other is Triangle triangle) {
                 return Equals(triangle);
             } else {
                 return false;
             }
         }
 
+        /// <summary>
+        /// Returns the hash code of the triangle.
+        /// </summary>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 17;
-                hash = hash * 23 + this.a.GetHashCode();
-                hash = hash * 23 + this.b.GetHashCode();
-                hash = hash * 23 + this.c.GetHashCode();
+                hash = hash * 23 + this.v1.GetHashCode();
+                hash = hash * 23 + this.v2.GetHashCode();
+                hash = hash * 23 + this.v3.GetHashCode();
                 return hash;
             }
         }
 
+        /// <summary>
+        /// Converts the triangle to a string.
+        /// </summary>
+        /// <returns>A string representation of the triangle.</returns>
+        public override string ToString()
+        {
+            return $"{v1.ToString()} {v2.ToString()} {v3.ToString()}";
+        }
+
+        /// <summary>
+        /// Determines if two triangles are equal.
+        /// </summary>
+        /// <param name="lhs">The left hand side triangle to compare.</param>
+        /// <param name="rhs">The right hand side triangle to compare.</param>
         public static bool operator ==(Triangle lhs, Triangle rhs) => lhs.Equals(rhs);
+
+        /// <summary>
+        /// Determines if two triangles are not equal.
+        /// </summary>
+        /// <param name="lhs">The left hand side triangle to compare.</param>
+        /// <param name="rhs">The right hand side triangle to compare.</param>
         public static bool operator !=(Triangle lhs, Triangle rhs) => !lhs.Equals(rhs);
 
     }

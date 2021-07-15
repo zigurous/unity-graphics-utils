@@ -6,8 +6,8 @@
     public enum RenderingMode
     {
         /// <summary>
-        /// Is the default, and suitable for normal solid objects with no
-        /// transparent areas.
+        /// The default rendering mode, and suitable for normal solid objects
+        /// with no transparent areas.
         /// </summary>
         Opaque,
 

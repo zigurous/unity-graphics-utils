@@ -28,6 +28,9 @@ namespace Zigurous.Graphics
             }
         }
 
+        /// <summary>
+        /// Inverts the normals and triangles of the mesh.
+        /// </summary>
         public void Invert()
         {
             this.inverted = !this.inverted;

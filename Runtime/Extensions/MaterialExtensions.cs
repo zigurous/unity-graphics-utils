@@ -3,13 +3,20 @@ using UnityEngine.Rendering;
 
 namespace Zigurous.Graphics
 {
+    /// <summary>
+    /// Extension methods for materials.
+    /// </summary>
     public static class MaterialExtensions
     {
+        /// <summary>
+        /// Returns the rendering mode of the material, see <see cref="RenderingMode"/>.
+        /// </summary>
+        /// <param name="material">The material to get the rendering mode from.</param>
         public static RenderingMode GetRenderingMode(this Material material)
         {
-            int renderingMode = (int)material.GetFloat(Identifier.Mode);
+            int mode = (int)material.GetFloat(Identifier.Mode);
 
-            switch (renderingMode)
+            switch (mode)
             {
                 case 1:
                     return RenderingMode.Cutout;
@@ -22,9 +29,14 @@ namespace Zigurous.Graphics
             }
         }
 
-        public static void SetRenderingMode(this Material material, RenderingMode renderingMode)
+        /// <summary>
+        /// Sets the rendering mode of the material, see <see cref="RenderingMode"/>.
+        /// </summary>
+        /// <param name="material">The material to set the rendering mode on.</param>
+        /// <param name="mode">The rendering mode to set.</param>
+        public static void SetRenderingMode(this Material material, RenderingMode mode)
         {
-            switch (renderingMode)
+            switch (mode)
             {
                 case RenderingMode.Opaque:
                     material.SetOverrideTag("RenderType", "");
