@@ -20,9 +20,9 @@ namespace Zigurous.Graphics
         public string assetName;
 
         /// <summary>
-        /// Saves the mesh on start, otherwise it needs to be saved manually.
+        /// Saves the mesh on start, otherwise it needs to be called manually.
         /// </summary>
-        [Tooltip("Saves the mesh on start, otherwise it needs to be saved manually.")]
+        [Tooltip("Saves the mesh on start, otherwise it needs to be called manually.")]
         public bool saveOnStart = true;
 
         private void Reset()
