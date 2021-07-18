@@ -32,7 +32,7 @@ using Zigurous.Graphics;
 
 ## Reference
 
-- [Auto Tiling](https://docs.zigurous.com/com.zigurous.graphics/manual/auto-tiling.md)
-- [Custom Meshes](https://docs.zigurous.com/com.zigurous.graphics/manual/custom-meshes.md)
-- [Shader Properties](https://docs.zigurous.com/com.zigurous.graphics/manual/shader-properties.md)
-- [Texture Drawers](https://docs.zigurous.com/com.zigurous.graphics/manual/texture-drawers.md)
+- [Auto Tiling](https://docs.zigurous.com/com.zigurous.graphics/manual/auto-tiling.html)
+- [Custom Meshes](https://docs.zigurous.com/com.zigurous.graphics/manual/custom-meshes.html)
+- [Shader Properties](https://docs.zigurous.com/com.zigurous.graphics/manual/shader-properties.html)
+- [Texture Drawers](https://docs.zigurous.com/com.zigurous.graphics/manual/texture-drawers.html)
