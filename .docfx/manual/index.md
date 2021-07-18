@@ -4,6 +4,7 @@ The Graphics Utils package provides scripts and utilities for graphics and rende
 
 ### Reference
 
-- [Meshes](meshes.md)
-- [Identifiers](identifiers.md)
-- [Auto Tiling](tiling.md)
+- [Auto Tiling](auto-tiling.md)
+- [Custom Meshes](custom-meshes.md)
+- [Shader Properties](shader-properties.md)
+- [Texture Drawers](texture-drawers.md)
