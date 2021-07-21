@@ -1,9 +1,6 @@
 # Graphics Utils
 
-[![](https://img.shields.io/badge/github-repo-blue?logo=github)](https://github.com/zigurous/unity-graphics-utils)
-[![](https://img.shields.io/github/package-json/v/zigurous/unity-graphics-utils)](https://github.com/zigurous/unity-graphics-utils/releases)
-[![](https://img.shields.io/badge/docs-link-success)](https://docs.zigurous.com/com.zigurous.graphics)
-[![](https://img.shields.io/github/license/zigurous/unity-graphics-utils)](https://github.com/zigurous/unity-graphics-utils/blob/main/LICENSE.md)
+[![](https://img.shields.io/badge/github-repo-blue?logo=github)](https://github.com/zigurous/unity-graphics-utils) [![](https://img.shields.io/github/package-json/v/zigurous/unity-graphics-utils)](https://github.com/zigurous/unity-graphics-utils/releases) [![](https://img.shields.io/badge/docs-link-success)](https://docs.zigurous.com/com.zigurous.graphics) [![](https://img.shields.io/github/license/zigurous/unity-graphics-utils)](https://github.com/zigurous/unity-graphics-utils/blob/main/LICENSE.md)
 
 The Graphics Utils package provides scripts and utilities for graphics and rendering purposes in Unity projects. The package is still early in development, and more functionality will be added over time.
 
