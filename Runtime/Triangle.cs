@@ -53,7 +53,7 @@ namespace Zigurous.Graphics
                     case 0: return v1;
                     case 1: return v2;
                     case 2: return v3;
-                    default: return Vector3.zero;
+                    default: throw new IndexOutOfRangeException();
                 }
             }
             set
@@ -63,7 +63,7 @@ namespace Zigurous.Graphics
                     case 0: v1 = value; break;
                     case 1: v2 = value; break;
                     case 2: v3 = value; break;
-                    default: break;
+                    default: throw new IndexOutOfRangeException();
                 }
             }
         }
