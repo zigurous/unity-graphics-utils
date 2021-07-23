@@ -110,7 +110,6 @@ namespace Zigurous.Graphics
         /// <summary>
         /// Converts the triangle to a string.
         /// </summary>
-        /// <returns>A string representation of the triangle.</returns>
         public override string ToString()
         {
             return $"{v1.ToString()} {v2.ToString()} {v3.ToString()}";
