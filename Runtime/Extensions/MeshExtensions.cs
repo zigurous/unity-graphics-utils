@@ -11,6 +11,7 @@ namespace Zigurous.Graphics
         /// Returns a new copy of the mesh.
         /// </summary>
         /// <param name="mesh">The mesh to copy.</param>
+        /// <returns>A new copy of the mesh.</returns>
         public static Mesh Copy(this Mesh mesh)
         {
             Mesh copy = new Mesh();
@@ -54,6 +55,7 @@ namespace Zigurous.Graphics
         /// Returns an array of inverted normals of the mesh.
         /// </summary>
         /// <param name="mesh">The mesh to get the inverted normals from.</param>
+        /// <returns>An array of inverted normals of the mesh.</returns>
         public static Vector3[] InvertedNormals(this Mesh mesh)
         {
             Vector3[] normals = mesh.normals;
@@ -81,6 +83,7 @@ namespace Zigurous.Graphics
         /// Returns an array of inverted triangles of the mesh.
         /// </summary>
         /// <param name="mesh">The mesh to get the inverted triangles from.</param>
+        /// <returns>An array of inverted triangles of the mesh.</returns>
         public static int[] InvertedTriangles(this Mesh mesh)
         {
             int[] triangles = mesh.triangles;
@@ -100,6 +103,7 @@ namespace Zigurous.Graphics
         /// </summary>
         /// <param name="mesh">The mesh to get the inverted triangles from.</param>
         /// <param name="submesh">The submesh index.</param>
+        /// <returns>An array of inverted triangles of the submesh.</returns>
         public static int[] InvertedTriangles(this Mesh mesh, int submesh)
         {
             int[] triangles = mesh.GetTriangles(submesh);

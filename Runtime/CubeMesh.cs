@@ -15,6 +15,7 @@ namespace Zigurous.Graphics
         /// <summary>
         /// A cube mesh that can be shared across many objects.
         /// </summary>
+        /// <returns>A shared cube mesh instance.</returns>
         public static Mesh sharedMesh
         {
             get

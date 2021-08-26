@@ -12,6 +12,7 @@ namespace Zigurous.Graphics
         /// Returns the rendering mode of the material, see <see cref="RenderingMode"/>.
         /// </summary>
         /// <param name="material">The material to get the rendering mode from.</param>
+        /// <returns>The rendering mode of the material.</returns>
         public static RenderingMode GetRenderingMode(this Material material)
         {
             int mode = (int)material.GetFloat(Identifier.Mode);

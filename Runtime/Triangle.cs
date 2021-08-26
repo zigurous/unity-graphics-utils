@@ -69,9 +69,10 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Determines if the triangle is equal to <paramref name="other"/>.
+        /// Determines if the triangle is equal to another triangle.
         /// </summary>
         /// <param name="other">The triangle to compare to.</param>
+        /// <returns>True if the triangles are equal, false otherwise.</returns>
         public bool Equals(Triangle other)
         {
             return this.v1 == other.v1 &&
@@ -80,9 +81,10 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Determines if the triangle is equal to <paramref name="other"/>.
+        /// Determines if the triangle is equal to another triangle.
         /// </summary>
         /// <param name="other">The object to compare to.</param>
+        /// <returns>True if the triangles are equal, false otherwise.</returns>
         public override bool Equals(object other)
         {
             if (other is Triangle triangle) {
@@ -95,6 +97,7 @@ namespace Zigurous.Graphics
         /// <summary>
         /// Returns the hash code of the triangle.
         /// </summary>
+        /// <returns>The hash code of the triangle.</returns>
         public override int GetHashCode()
         {
             unchecked // Overflow is fine, just wrap
@@ -110,6 +113,7 @@ namespace Zigurous.Graphics
         /// <summary>
         /// Converts the triangle to a string.
         /// </summary>
+        /// <returns>The string representation of the triangle.</returns>
         public override string ToString()
         {
             return $"{v1.ToString()} {v2.ToString()} {v3.ToString()}";
@@ -118,15 +122,17 @@ namespace Zigurous.Graphics
         /// <summary>
         /// Determines if two triangles are equal.
         /// </summary>
-        /// <param name="lhs">The left hand side triangle to compare.</param>
-        /// <param name="rhs">The right hand side triangle to compare.</param>
+        /// <param name="lhs">The first triangle to compare.</param>
+        /// <param name="rhs">The second triangle to compare.</param>
+        /// <returns>True if the triangles are equal, false otherwise.</returns>
         public static bool operator ==(Triangle lhs, Triangle rhs) => lhs.Equals(rhs);
 
         /// <summary>
         /// Determines if two triangles are not equal.
         /// </summary>
-        /// <param name="lhs">The left hand side triangle to compare.</param>
-        /// <param name="rhs">The right hand side triangle to compare.</param>
+        /// <param name="lhs">The first triangle to compare.</param>
+        /// <param name="rhs">The second triangle to compare.</param>
+        /// <returns>True if the triangles are not equal, false otherwise.</returns>
         public static bool operator !=(Triangle lhs, Triangle rhs) => !lhs.Equals(rhs);
 
     }

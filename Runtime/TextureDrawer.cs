@@ -99,7 +99,7 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// The drawn texture.
+        /// The drawn texture (Read only).
         /// </summary>
         public Texture2D texture { get; private set; }
 
@@ -110,7 +110,8 @@ namespace Zigurous.Graphics
         public TextureSettings textureSettings = new TextureSettings(new Vector2Int(1024, 1024), FilterMode.Bilinear, TextureWrapMode.Clamp);
 
         /// <summary>
-        /// The renderer component that holds the material the texture is added to.
+        /// The renderer component that holds the material the texture is added
+        /// to (Read only).
         /// </summary>
         public new Renderer renderer { get; private set; }
 
@@ -121,7 +122,8 @@ namespace Zigurous.Graphics
         public RenderSettings renderSettings = new RenderSettings("_MainTex", 1.0f, false);
 
         /// <summary>
-        /// Whether the settings have changed since the texture was last drawn.
+        /// Whether the settings have changed since the texture was last drawn
+        /// (Read only).
         /// </summary>
         public bool invalidated { get; internal set; }
 

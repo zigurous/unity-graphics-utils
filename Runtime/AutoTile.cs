@@ -90,7 +90,7 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// The renderer component of the material being tiled.
+        /// The renderer component of the material being tiled (Read only).
         /// </summary>
         public new Renderer renderer { get; private set; }
 

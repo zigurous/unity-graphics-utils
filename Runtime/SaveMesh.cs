@@ -13,10 +13,9 @@ namespace Zigurous.Graphics
     public sealed class SaveMesh : MonoBehaviour
     {
         /// <summary>
-        /// The name the asset is saved with. The mesh name will be used if not
-        /// set.
+        /// The name of the saved asset. The mesh name will be used if not set.
         /// </summary>
-        [Tooltip("The name the asset is saved with. The mesh name will be used if not set.")]
+        [Tooltip("The name of the saved asset. The mesh name will be used if not set.")]
         public string assetName;
 
         /// <summary>
@@ -51,7 +50,7 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Saves the mesh to a project asset.
+        /// Saves the mesh as a project asset.
         /// </summary>
         public void Save()
         {

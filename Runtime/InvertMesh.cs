@@ -10,7 +10,7 @@ namespace Zigurous.Graphics
     public sealed class InvertMesh : MonoBehaviour
     {
         /// <summary>
-        /// Whether the mesh is currently inverted.
+        /// Whether the mesh is currently inverted (Read only).
         /// </summary>
         public bool inverted { get; private set; }
 
