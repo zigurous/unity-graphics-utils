@@ -12,34 +12,34 @@ namespace Zigurous.Graphics
     public sealed class CubeMesh6 : MonoBehaviour
     {
         /// <summary>
-        /// The triangles of the cube for the right face.
+        /// The triangles of the cube for the right face (Read only).
         /// </summary>
-        public static readonly int[] TrianglesRight = new int[] { 20, 21, 22, 20, 22, 23 };
+        public static readonly int[] trianglesRight = new int[] { 20, 21, 22, 20, 22, 23 };
 
         /// <summary>
-        /// The triangles of the cube for the left face.
+        /// The triangles of the cube for the left face (Read only).
         /// </summary>
-        public static readonly int[] TrianglesLeft = new int[] { 16, 17, 18, 16, 18, 19 };
+        public static readonly int[] trianglesLeft = new int[] { 16, 17, 18, 16, 18, 19 };
 
         /// <summary>
-        /// The triangles of the cube for the top face.
+        /// The triangles of the cube for the top face (Read only).
         /// </summary>
-        public static readonly int[] TrianglesTop = new int[] { 8, 4, 5, 8, 5, 9 };
+        public static readonly int[] trianglesTop = new int[] { 8, 4, 5, 8, 5, 9 };
 
         /// <summary>
-        /// The triangles of the cube for the bottom face.
+        /// The triangles of the cube for the bottom face (Read only).
         /// </summary>
-        public static readonly int[] TrianglesBottom = new int[] { 12, 13, 14, 12, 14, 15 };
+        public static readonly int[] trianglesBottom = new int[] { 12, 13, 14, 12, 14, 15 };
 
         /// <summary>
-        /// The triangles of the cube for the front face.
+        /// The triangles of the cube for the front face (Read only).
         /// </summary>
-        public static readonly int[] TrianglesFront = new int[] { 0, 2, 3, 0, 3, 1 };
+        public static readonly int[] trianglesFront = new int[] { 0, 2, 3, 0, 3, 1 };
 
         /// <summary>
-        /// The triangles of the cube for the back face.
+        /// The triangles of the cube for the back face (Read only).
         /// </summary>
-        public static readonly int[] TrianglesBack = new int[] { 10, 6, 7, 10, 7, 11 };
+        public static readonly int[] trianglesBack = new int[] { 10, 6, 7, 10, 7, 11 };
 
         private void Awake()
         {
@@ -69,12 +69,12 @@ namespace Zigurous.Graphics
             Mesh mesh = CubeMesh.sharedMesh.Copy();
             mesh.name = "Cube-6";
             mesh.subMeshCount = 6;
-            mesh.SetTriangles(TrianglesRight, 0);
-            mesh.SetTriangles(TrianglesLeft, 1);
-            mesh.SetTriangles(TrianglesTop, 2);
-            mesh.SetTriangles(TrianglesBottom, 3);
-            mesh.SetTriangles(TrianglesFront, 4);
-            mesh.SetTriangles(TrianglesBack, 5);
+            mesh.SetTriangles(trianglesRight, 0);
+            mesh.SetTriangles(trianglesLeft, 1);
+            mesh.SetTriangles(trianglesTop, 2);
+            mesh.SetTriangles(trianglesBottom, 3);
+            mesh.SetTriangles(trianglesFront, 4);
+            mesh.SetTriangles(trianglesBack, 5);
             return mesh;
         }
 

@@ -13,7 +13,7 @@ namespace Zigurous.Graphics
         private static Mesh _sharedMesh;
 
         /// <summary>
-        /// A cube mesh that can be shared across many objects.
+        /// A cube mesh that can be shared across many objects (Read only).
         /// </summary>
         /// <returns>A shared cube mesh instance.</returns>
         public static Mesh sharedMesh
@@ -38,9 +38,9 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// The triangles of the cube.
+        /// The triangles of the cube (Read only).
         /// </summary>
-        public static readonly int[] Triangles = {
+        public static readonly int[] triangles = {
              0,  2,  3,
              0,  3,  1,
              8,  4,  5,
@@ -56,9 +56,9 @@ namespace Zigurous.Graphics
         };
 
         /// <summary>
-        /// The corners of the cube.
+        /// The corners of the cube (Read only).
         /// </summary>
-        public static readonly Vector3[] Corners = {
+        public static readonly Vector3[] corners = {
             new Vector3( 0.5f, -0.5f,  0.5f),
             new Vector3(-0.5f, -0.5f,  0.5f),
             new Vector3( 0.5f,  0.5f,  0.5f),
@@ -70,21 +70,21 @@ namespace Zigurous.Graphics
         };
 
         /// <summary>
-        /// The verticies of the cube.
+        /// The verticies of the cube (Read only).
         /// </summary>
-        public static readonly Vector3[] Vertices = {
-            Corners[0], Corners[1], Corners[2], Corners[3], // Front
-            Corners[4], Corners[5], Corners[6], Corners[7], // Back
-            Corners[2], Corners[3], Corners[4], Corners[5], // Top
-            Corners[6], Corners[0], Corners[1], Corners[7], // Bottom
-            Corners[1], Corners[3], Corners[5], Corners[7], // Left
-            Corners[6], Corners[4], Corners[2], Corners[0], // Right
+        public static readonly Vector3[] vertices = {
+            corners[0], corners[1], corners[2], corners[3], // Front
+            corners[4], corners[5], corners[6], corners[7], // Back
+            corners[2], corners[3], corners[4], corners[5], // Top
+            corners[6], corners[0], corners[1], corners[7], // Bottom
+            corners[1], corners[3], corners[5], corners[7], // Left
+            corners[6], corners[4], corners[2], corners[0], // Right
         };
 
         /// <summary>
-        /// The UV coordinates of the cube.
+        /// The UV coordinates of the cube (Read only).
         /// </summary>
-        public static readonly Vector2[] UV = {
+        public static readonly Vector2[] uv = {
             new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1), new Vector2(1, 1), // Front
             new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, 1), new Vector2(1, 1), // Back
             new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 0), new Vector2(1, 0), // Top
