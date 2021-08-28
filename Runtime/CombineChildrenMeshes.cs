@@ -78,6 +78,7 @@ namespace Zigurous.Graphics
 
             // Create a new mesh from all of the combined children
             Mesh combinedMesh = new Mesh();
+            combinedMesh.name = "Combined Mesh";
             combinedMesh.CombineMeshes(combine);
 
             if (this.optimizeMesh) {

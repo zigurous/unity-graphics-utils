@@ -55,6 +55,7 @@ namespace Zigurous.Graphics
             }
 
             Mesh combinedMesh = new Mesh();
+            combinedMesh.name = "Combined Mesh";
             combinedMesh.CombineMeshes(combine);
 
             if (optimizeMesh) {

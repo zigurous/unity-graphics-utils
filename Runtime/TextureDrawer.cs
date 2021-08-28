@@ -85,7 +85,7 @@ namespace Zigurous.Graphics
             /// <param name="shaderTextureName">The shader property that holds the texture.</param>
             /// <param name="scaleFactor">The amount of scaling to apply to the transform (as a multiplier).</param>
             /// <param name="scaleTransform">Scales the transform of the object to match the texture size.</param>
-            public RenderSettings(ShaderProperty shaderTextureName, float scaleFactor = 1.0f, bool scaleTransform = false)
+            public RenderSettings(ShaderProperty shaderTextureName, float scaleFactor = 1f, bool scaleTransform = false)
             {
                 this.shaderTextureName = shaderTextureName;
                 this.scaleFactor = scaleFactor;
@@ -119,7 +119,7 @@ namespace Zigurous.Graphics
         /// The render settings.
         /// </summary>
         [Tooltip("The render settings.")]
-        public RenderSettings renderSettings = new RenderSettings("_MainTex", 1.0f, false);
+        public RenderSettings renderSettings = new RenderSettings("_MainTex", 1f, false);
 
         /// <summary>
         /// Whether the settings have changed since the texture was last drawn
@@ -227,7 +227,7 @@ namespace Zigurous.Graphics
 
             Vector3 scale = new Vector2(this.texture.width, this.texture.height);
             scale *= this.renderSettings.scaleFactor;
-            scale.z = 1.0f;
+            scale.z = 1f;
 
             if (scale.x != Mathf.Infinity && scale.y != Mathf.Infinity) {
                 this.transform.localScale = scale;
