@@ -34,6 +34,40 @@ namespace Zigurous.Graphics
         }
         #endif
 
+        /// <summary>
+        /// Combines the meshes of the mesh filters into one mesh.
+        /// </summary>
+        /// <param name="filters">The mesh filters to combine.</param>
+        /// <param name="optimizeMesh">Optimizes the combined mesh data to improve rendering performance.</param>
+        /// <param name="recalculateBounds">Recalculates the bounding volume of the combined mesh.</param>
+        /// <returns>The combined mesh.</returns>
+        public static Mesh CombineMeshes(this MeshFilter[] filters, bool optimizeMesh = true, bool recalculateBounds = true)
+        {
+            CombineInstance[] combine = new CombineInstance[filters.Length];
+
+            for (int i = 0; i < filters.Length; i++)
+            {
+                MeshFilter child = filters[i];
+                CombineInstance instance = new CombineInstance();
+                instance.mesh = child.mesh;
+                instance.transform = Matrix4x4.TRS(child.transform.localPosition, child.transform.localRotation, child.transform.localScale);
+                combine[i] = instance;
+            }
+
+            Mesh combinedMesh = new Mesh();
+            combinedMesh.CombineMeshes(combine);
+
+            if (optimizeMesh) {
+                combinedMesh.Optimize();
+            }
+
+            if (recalculateBounds) {
+                combinedMesh.RecalculateBounds();
+            }
+
+            return combinedMesh;
+        }
+
     }
 
 }
