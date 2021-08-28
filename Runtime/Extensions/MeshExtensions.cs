@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using UnityEngine;
 
 namespace Zigurous.Graphics
 {
@@ -7,6 +10,20 @@ namespace Zigurous.Graphics
     /// </summary>
     public static class MeshExtensions
     {
+        #if UNITY_EDITOR
+        /// <summary>
+        /// Saves the mesh as a project asset (Editor only).
+        /// </summary>
+        /// <param name="mesh">The mesh to save.</param>
+        /// <param name="assetName">The name to save the asset as.</param>
+        public static void Save(this Mesh mesh, string assetName)
+        {
+            if (mesh != null) {
+                AssetDatabase.CreateAsset(mesh, "Assets/" + assetName + ".mesh");
+            }
+        }
+        #endif
+
         /// <summary>
         /// Returns a new copy of the mesh.
         /// </summary>

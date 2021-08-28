@@ -1,7 +1,4 @@
-﻿#if UNITY_EDITOR
-using UnityEditor;
-#endif
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Zigurous.Graphics
 {
@@ -44,29 +41,28 @@ namespace Zigurous.Graphics
 
         private void Start()
         {
+            #if UNITY_EDITOR
             if (this.saveOnStart) {
                 Save();
             }
+            #endif
         }
 
+        #if UNITY_EDITOR
         /// <summary>
         /// Saves the mesh as a project asset.
         /// </summary>
         public void Save()
         {
-            #if UNITY_EDITOR
             MeshFilter filter = GetComponent<MeshFilter>();
 
-            if (filter.mesh != null)
-            {
-                if (this.assetName.Length > 0) {
-                    AssetDatabase.CreateAsset(filter.mesh, "Assets/" + this.assetName + ".mesh");
-                } else {
-                    AssetDatabase.CreateAsset(filter.mesh, "Assets/" + filter.mesh.name + ".mesh");
-                }
+            if (this.assetName.Length > 0) {
+                filter.SaveMesh(this.assetName);
+            } else {
+                filter.SaveMesh();
             }
-            #endif
         }
+        #endif
 
     }
 
