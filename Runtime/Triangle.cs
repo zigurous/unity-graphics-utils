@@ -40,8 +40,7 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Gets or sets a vertex of the triangle at the given
-        /// <paramref name="index"/>.
+        /// Gets or sets a vertex of the triangle at the given index.
         /// </summary>
         /// <param name="index">The index of the vertex.</param>
         public Vector3 this[int index]
