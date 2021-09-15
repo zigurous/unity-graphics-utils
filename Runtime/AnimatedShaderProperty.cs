@@ -55,7 +55,7 @@ namespace Zigurous.Graphics
             this.valueOverTime = valueOverTime;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override void Animate(Material material, float time)
         {
             material.SetFloat(this.property.id, this.valueOverTime.Evaluate(time));
@@ -85,7 +85,7 @@ namespace Zigurous.Graphics
             this.valueOverTime = valueOverTime;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override void Animate(Material material, float time)
         {
             material.SetInt(this.property.id, (int)this.valueOverTime.Evaluate(time));
@@ -114,7 +114,7 @@ namespace Zigurous.Graphics
             this.colorOverTime = colorOverTime;
         }
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         public override void Animate(Material material, float time)
         {
             material.SetColor(this.property.id, this.colorOverTime.Evaluate(time));

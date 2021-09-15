@@ -61,7 +61,7 @@ namespace Zigurous.Graphics
         [Tooltip("The checkerboard settings.")]
         public CheckerboardSettings checkerboard = new CheckerboardSettings(4, 4, Color.white, Color.black);
 
-        /// <inheritdoc />
+        /// <inheritdoc/>
         protected override void SetPixels(Texture2D texture)
         {
             int rectWidth = texture.width / this.checkerboard.columns;
