@@ -4,16 +4,19 @@
   "displayName": "Graphics Utils",
   "description": "The Graphics Utils package provides scripts and utilities for graphics and rendering purposes in Unity projects.",
   "unity": "2019.4",
-  "keywords": [
-    "graphics",
-    "rendering",
-    "scripts",
-    "utilities"
-  ],
   "repository": "https://github.com/zigurous/unity-graphics-utils",
   "documentationUrl": "https://docs.zigurous.com/com.zigurous.graphics",
   "changelogUrl": "https://docs.zigurous.com/com.zigurous.graphics/changelog",
   "licensesUrl": "https://docs.zigurous.com/com.zigurous.graphics/license",
+  "keywords": [
+    "graphics",
+    "rendering",
+    "shaders",
+    "materials",
+    "textures",
+    "drawing",
+    "mesh"
+  ],
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@zigurous"
   },
