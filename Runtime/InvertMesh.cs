@@ -16,14 +16,14 @@ namespace Zigurous.Graphics
 
         private void OnEnable()
         {
-            if (!this.inverted) {
+            if (!inverted) {
                 Invert();
             }
         }
 
         private void OnDisable()
         {
-            if (this.inverted) {
+            if (inverted) {
                 Invert();
             }
         }
@@ -33,7 +33,7 @@ namespace Zigurous.Graphics
         /// </summary>
         public void Invert()
         {
-            this.inverted = !this.inverted;
+            inverted = !inverted;
 
             MeshFilter filter = GetComponent<MeshFilter>();
 

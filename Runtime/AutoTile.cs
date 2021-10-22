@@ -131,13 +131,13 @@ namespace Zigurous.Graphics
 
                 if (mesh != null)
                 {
-                    this.submeshes = new Submesh[mesh.subMeshCount];
+                    submeshes = new Submesh[mesh.subMeshCount];
 
-                    for (int i = 0; i < this.submeshes.Length; i++)
+                    for (int i = 0; i < submeshes.Length; i++)
                     {
                         Submesh submesh = new Submesh();
                         submesh.submeshIndex = i;
-                        this.submeshes[i] = submesh;
+                        submeshes[i] = submesh;
                     }
                 }
             }
@@ -145,17 +145,17 @@ namespace Zigurous.Graphics
 
         private void OnValidate()
         {
-            if (this.enabled) {
+            if (enabled) {
                 Tile();
             }
         }
 
         private void LateUpdate()
         {
-            if (this.autoUpdate && this.transform.hasChanged)
+            if (autoUpdate && transform.hasChanged)
             {
                 Tile();
-                this.transform.hasChanged = false;
+                transform.hasChanged = false;
             }
         }
 
@@ -171,22 +171,22 @@ namespace Zigurous.Graphics
             }
             #endif
 
-            if (this.renderer == null) {
-                this.renderer = GetComponent<Renderer>();
+            if (renderer == null) {
+                renderer = GetComponent<Renderer>();
             }
 
             if (Application.isPlaying)
             {
-                Material[] materials = this.renderer.materials;
+                Material[] materials = renderer.materials;
 
                 if (materials != null) {
                     UpdateMaterials(materials);
                 }
             }
             #if UNITY_EDITOR
-            else if (this.updateInEditor)
+            else if (updateInEditor)
             {
-                Material[] materials = this.renderer.sharedMaterials;
+                Material[] materials = renderer.sharedMaterials;
 
                 if (materials != null) {
                     UpdateMaterialsInEditor(materials);
@@ -197,9 +197,9 @@ namespace Zigurous.Graphics
 
         private void UpdateMaterials(Material[] materials)
         {
-            for (int i = 0; i < this.submeshes.Length; i++)
+            for (int i = 0; i < submeshes.Length; i++)
             {
-                Submesh submesh = this.submeshes[i];
+                Submesh submesh = submeshes[i];
 
                 if (submesh.submeshIndex >= 0 && submesh.submeshIndex < materials.Length) {
                     UpdateMaterial(materials[submesh.submeshIndex], submesh);
@@ -210,9 +210,9 @@ namespace Zigurous.Graphics
         #if UNITY_EDITOR
         private void UpdateMaterialsInEditor(Material[] materials)
         {
-            for (int i = 0; i < this.submeshes.Length; i++)
+            for (int i = 0; i < submeshes.Length; i++)
             {
-                Submesh submesh = this.submeshes[i];
+                Submesh submesh = submeshes[i];
 
                 if (submesh.submeshIndex >= 0 && submesh.submeshIndex < materials.Length)
                 {
@@ -226,7 +226,7 @@ namespace Zigurous.Graphics
                         {
                             submesh.editorMaterial = new Material(sharedMaterial);
                             materials[submesh.submeshIndex] = submesh.editorMaterial;
-                            this.renderer.sharedMaterials = materials;
+                            renderer.sharedMaterials = materials;
                         }
 
                         UpdateMaterial(submesh.editorMaterial, submesh);
@@ -238,16 +238,16 @@ namespace Zigurous.Graphics
 
         private void UpdateMaterial(Material material, Submesh submesh)
         {
-            if (material == null || this.textureNames == null) {
+            if (material == null || textureNames == null) {
                 return;
             }
 
             Vector2 textureScale = GetTextureScale(submesh.axis, submesh.unitScale);
             Vector2 textureOffset = submesh.textureOffset;
 
-            for (int i = 0; i < this.textureNames.Length; i++)
+            for (int i = 0; i < textureNames.Length; i++)
             {
-                string property = this.textureNames[i];
+                string property = textureNames[i];
 
                 material.SetTextureScale(property, textureScale);
                 material.SetTextureOffset(property, textureOffset);
@@ -256,7 +256,7 @@ namespace Zigurous.Graphics
 
         private Vector2 GetTextureScale(Axis axis, Vector3 baseScale)
         {
-            Vector3 lossy = this.transform.lossyScale;
+            Vector3 lossy = transform.lossyScale;
             Vector3 scale = Vector3.Scale(lossy, baseScale);
 
             switch (axis)

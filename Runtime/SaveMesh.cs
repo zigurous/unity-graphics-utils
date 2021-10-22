@@ -28,13 +28,13 @@ namespace Zigurous.Graphics
             if (Application.isPlaying)
             {
                 if (filter.mesh != null) {
-                    this.assetName = filter.mesh.name;
+                    assetName = filter.mesh.name;
                 }
             }
             else
             {
                 if (filter.sharedMesh != null) {
-                    this.assetName = filter.sharedMesh.name;
+                    assetName = filter.sharedMesh.name;
                 }
             }
         }
@@ -42,7 +42,7 @@ namespace Zigurous.Graphics
         private void Start()
         {
             #if UNITY_EDITOR
-            if (this.saveOnStart) {
+            if (saveOnStart) {
                 Save();
             }
             #endif
@@ -56,8 +56,8 @@ namespace Zigurous.Graphics
         {
             MeshFilter filter = GetComponent<MeshFilter>();
 
-            if (this.assetName.Length > 0) {
-                filter.SaveMesh(this.assetName);
+            if (assetName.Length > 0) {
+                filter.SaveMesh(assetName);
             } else {
                 filter.SaveMesh();
             }

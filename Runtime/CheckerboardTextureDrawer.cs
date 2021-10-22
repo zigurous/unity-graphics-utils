@@ -64,14 +64,14 @@ namespace Zigurous.Graphics
         /// <inheritdoc/>
         protected override void SetPixels(Texture2D texture)
         {
-            int rectWidth = texture.width / this.checkerboard.columns;
-            int rectHeight = texture.height / this.checkerboard.rows;
+            int rectWidth = texture.width / checkerboard.columns;
+            int rectHeight = texture.height / checkerboard.rows;
 
-            for (int row = 0; row < this.checkerboard.rows; row++)
+            for (int row = 0; row < checkerboard.rows; row++)
             {
-                for (int col = 0; col < this.checkerboard.columns; col++)
+                for (int col = 0; col < checkerboard.columns; col++)
                 {
-                    Color color = (row + col) % 2 == 0 ? this.checkerboard.colorA : this.checkerboard.colorB;
+                    Color color = (row + col) % 2 == 0 ? checkerboard.colorA : checkerboard.colorB;
 
                     int positionX = col * rectWidth;
                     int positionY = row * rectHeight;
@@ -91,12 +91,12 @@ namespace Zigurous.Graphics
         {
             base.OnValidate();
 
-            if (this.checkerboard.rows < 2) {
-                this.checkerboard.rows = 2;
+            if (checkerboard.rows < 2) {
+                checkerboard.rows = 2;
             }
 
-            if (this.checkerboard.columns < 2) {
-                this.checkerboard.columns = 2;
+            if (checkerboard.columns < 2) {
+                checkerboard.columns = 2;
             }
         }
 

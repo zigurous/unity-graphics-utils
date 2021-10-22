@@ -102,9 +102,9 @@ namespace Zigurous.Graphics
             unchecked // Overflow is fine, just wrap
             {
                 int hash = 17;
-                hash = hash * 23 + this.v1.GetHashCode();
-                hash = hash * 23 + this.v2.GetHashCode();
-                hash = hash * 23 + this.v3.GetHashCode();
+                hash = hash * 23 + v1.GetHashCode();
+                hash = hash * 23 + v2.GetHashCode();
+                hash = hash * 23 + v3.GetHashCode();
                 return hash;
             }
         }

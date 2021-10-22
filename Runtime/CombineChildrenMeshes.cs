@@ -37,7 +37,7 @@ namespace Zigurous.Graphics
         {
             MeshFilter parent = GetComponent<MeshFilter>();
 
-            if (this.combineOnStart && parent != null) {
+            if (combineOnStart && parent != null) {
                 parent.mesh = Combine();
             }
         }
@@ -58,7 +58,7 @@ namespace Zigurous.Graphics
                 MeshFilter child = children[i];
 
                 // Ignore the parent mesh
-                if (child.transform == this.transform) {
+                if (child.transform == transform) {
                     continue;
                 }
 
@@ -69,7 +69,7 @@ namespace Zigurous.Graphics
                 combine[submesh++] = instance;
 
                 // Destroy the child mesh
-                if (this.removeChildMeshes)
+                if (removeChildMeshes)
                 {
                     Destroy(child.GetComponent<MeshRenderer>());
                     Destroy(child);
@@ -81,11 +81,11 @@ namespace Zigurous.Graphics
             combinedMesh.name = "Combined Mesh";
             combinedMesh.CombineMeshes(combine);
 
-            if (this.optimizeMesh) {
+            if (optimizeMesh) {
                 combinedMesh.Optimize();
             }
 
-            if (this.recalculateBounds) {
+            if (recalculateBounds) {
                 combinedMesh.RecalculateBounds();
             }
 

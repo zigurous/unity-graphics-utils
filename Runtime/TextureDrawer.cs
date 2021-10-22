@@ -129,23 +129,23 @@ namespace Zigurous.Graphics
 
         protected virtual void Awake()
         {
-            this.renderer = GetComponent<Renderer>();
+            renderer = GetComponent<Renderer>();
         }
 
         protected virtual void OnValidate()
         {
-            this.invalidated = true;
+            invalidated = true;
 
-            if (this.textureSettings.size.x < 1) {
-                this.textureSettings.size.x = 1;
+            if (textureSettings.size.x < 1) {
+                textureSettings.size.x = 1;
             }
 
-            if (this.textureSettings.size.y < 1) {
-                this.textureSettings.size.y = 1;
+            if (textureSettings.size.y < 1) {
+                textureSettings.size.y = 1;
             }
 
-            if (this.renderer == null) {
-                this.renderer = GetComponent<Renderer>();
+            if (renderer == null) {
+                renderer = GetComponent<Renderer>();
             }
         }
 
@@ -159,12 +159,12 @@ namespace Zigurous.Graphics
         protected virtual void Update()
         {
             #if UNITY_EDITOR
-            if (!(Application.isPlaying || this.renderSettings.updateInEditor)) {
+            if (!(Application.isPlaying || renderSettings.updateInEditor)) {
                 return;
             }
             #endif
 
-            if (this.invalidated) {
+            if (invalidated) {
                 Draw();
             }
         }
@@ -175,22 +175,22 @@ namespace Zigurous.Graphics
         /// <returns>The drawn texture.</returns>
         public Texture2D Draw()
         {
-            if (this.texture == null || this.texture.width != this.textureSettings.size.x || this.texture.height != this.textureSettings.size.y) {
-                this.texture = new Texture2D(this.textureSettings.size.x, this.textureSettings.size.y);
+            if (texture == null || texture.width != textureSettings.size.x || texture.height != textureSettings.size.y) {
+                texture = new Texture2D(textureSettings.size.x, textureSettings.size.y);
             }
 
-            this.texture.filterMode = this.textureSettings.filterMode;
-            this.texture.wrapMode = this.textureSettings.wrapMode;
-            this.invalidated = false;
+            texture.filterMode = textureSettings.filterMode;
+            texture.wrapMode = textureSettings.wrapMode;
+            invalidated = false;
 
-            SetPixels(this.texture);
+            SetPixels(texture);
 
-            this.texture.Apply();
+            texture.Apply();
 
             ApplyTexture();
             SetTransformScale();
 
-            return this.texture;
+            return texture;
         }
 
         /// <summary>
@@ -204,15 +204,15 @@ namespace Zigurous.Graphics
         /// </summary>
         private void ApplyTexture()
         {
-            if (this.renderer == null) {
+            if (renderer == null) {
                 return;
             }
 
             if (Application.isPlaying) {
-                this.renderer.material.SetTexture(this.renderSettings.shaderTextureName.id, this.texture);
+                renderer.material.SetTexture(renderSettings.shaderTextureName.id, texture);
             } else {
-                this.renderer.sharedMaterial = new Material(this.renderer.sharedMaterial);
-                this.renderer.sharedMaterial.SetTexture(this.renderSettings.shaderTextureName.id, this.texture);
+                renderer.sharedMaterial = new Material(renderer.sharedMaterial);
+                renderer.sharedMaterial.SetTexture(renderSettings.shaderTextureName.id, texture);
             }
         }
 
@@ -221,16 +221,16 @@ namespace Zigurous.Graphics
         /// </summary>
         private void SetTransformScale()
         {
-            if (this.texture == null || !this.renderSettings.scaleTransform) {
+            if (texture == null || !renderSettings.scaleTransform) {
                 return;
             }
 
-            Vector3 scale = new Vector2(this.texture.width, this.texture.height);
-            scale *= this.renderSettings.scaleFactor;
+            Vector3 scale = new Vector2(texture.width, texture.height);
+            scale *= renderSettings.scaleFactor;
             scale.z = 1f;
 
             if (scale.x != Mathf.Infinity && scale.y != Mathf.Infinity) {
-                this.transform.localScale = scale;
+                transform.localScale = scale;
             }
         }
 
