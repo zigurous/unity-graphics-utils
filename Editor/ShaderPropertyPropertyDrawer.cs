@@ -6,28 +6,20 @@ namespace Zigurous.Graphics.Editor
     [CustomPropertyDrawer(typeof(ShaderProperty))]
     public sealed class ShaderPropertyPropertyDrawer : PropertyDrawer
     {
-        private SerializedProperty _name;
-        private SerializedProperty _id;
-
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            if (_name == null) {
-                _name = property.FindPropertyRelative("_name");
-            }
-
-            if (_id == null) {
-                _id = property.FindPropertyRelative("_id");
-            }
+            SerializedProperty name = property.FindPropertyRelative("_name");
+            SerializedProperty id = property.FindPropertyRelative("_id");
 
             EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);
 
-            string name = EditorGUI.TextField(position, _name.stringValue);
+            string value = EditorGUI.TextField(position, name.stringValue);
 
-            if (name != _name.stringValue)
+            if (value != name.stringValue)
             {
-                _name.stringValue = name;
-                _id.intValue = Shader.PropertyToID(name);
+                name.stringValue = value;
+                id.intValue = Shader.PropertyToID(value);
             }
 
             EditorGUI.EndProperty();
