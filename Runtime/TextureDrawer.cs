@@ -156,7 +156,7 @@ namespace Zigurous.Graphics
             }
         }
 
-        protected virtual void Update()
+        private void Update()
         {
             #if UNITY_EDITOR
             if (!(Application.isPlaying || renderSettings.updateInEditor)) {
@@ -194,12 +194,6 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Sets the pixels of the texture.
-        /// </summary>
-        /// <param name="texture">The texture to set the pixels on.</param>
-        protected abstract void SetPixels(Texture2D texture);
-
-        /// <summary>
         /// Applies the texture to the renderer material.
         /// </summary>
         private void ApplyTexture()
@@ -233,6 +227,12 @@ namespace Zigurous.Graphics
                 transform.localScale = scale;
             }
         }
+
+        /// <summary>
+        /// Sets the pixels of the texture.
+        /// </summary>
+        /// <param name="texture">The texture to set the pixels on.</param>
+        protected abstract void SetPixels(Texture2D texture);
 
     }
 
