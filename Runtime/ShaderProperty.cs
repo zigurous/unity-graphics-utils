@@ -11,7 +11,7 @@ namespace Zigurous.Graphics
     {
         [SerializeField]
         [HideInInspector]
-        private int _id;
+        private int m_Id;
 
         /// <summary>
         /// The id of the shader property (Read only).
@@ -20,27 +20,27 @@ namespace Zigurous.Graphics
         {
             get
             {
-                if (_id == 0) {
-                    _id = Shader.PropertyToID(_name);
+                if (m_Id == 0) {
+                    m_Id = Shader.PropertyToID(m_Name);
                 }
-                return _id;
+                return m_Id;
             }
         }
 
         [SerializeField]
         [Tooltip("The name of the shader property.")]
-        private string _name;
+        private string m_Name;
 
         /// <summary>
         /// The name of the shader property.
         /// </summary>
         public string name
         {
-            get => _name;
+            get => m_Name;
             set
             {
-                _name = value;
-                _id = Shader.PropertyToID(value);
+                m_Name = value;
+                m_Id = Shader.PropertyToID(value);
             }
         }
 
@@ -50,8 +50,8 @@ namespace Zigurous.Graphics
         /// <param name="name">The name of the shader property.</param>
         public ShaderProperty(string name)
         {
-            _name = name;
-            _id = Shader.PropertyToID(name);
+            m_Name = name;
+            m_Id = Shader.PropertyToID(name);
         }
 
         /// <summary>

@@ -8,8 +8,8 @@ namespace Zigurous.Graphics.Editor
     {
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            SerializedProperty name = property.FindPropertyRelative("_name");
-            SerializedProperty id = property.FindPropertyRelative("_id");
+            SerializedProperty id = property.FindPropertyRelative("m_Id");
+            SerializedProperty name = property.FindPropertyRelative("m_Name");
 
             EditorGUI.BeginProperty(position, label, property);
             position = EditorGUI.PrefixLabel(position, GUIUtility.GetControlID(FocusType.Passive), label);

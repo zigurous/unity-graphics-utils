@@ -10,7 +10,7 @@ namespace Zigurous.Graphics
     [AddComponentMenu("Zigurous/Graphics/Cube Mesh")]
     public sealed class CubeMesh : MonoBehaviour
     {
-        private static Mesh _sharedMesh;
+        private static Mesh m_SharedMesh;
 
         /// <summary>
         /// A cube mesh that can be shared across many objects (Read only).
@@ -20,20 +20,20 @@ namespace Zigurous.Graphics
         {
             get
             {
-                if (_sharedMesh == null)
+                if (m_SharedMesh == null)
                 {
                     GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
 
                     if (Application.isPlaying) {
-                        _sharedMesh = cube.GetComponent<MeshFilter>().mesh.Copy();
+                        m_SharedMesh = cube.GetComponent<MeshFilter>().mesh.Copy();
                     } else {
-                        _sharedMesh = cube.GetComponent<MeshFilter>().sharedMesh.Copy();
+                        m_SharedMesh = cube.GetComponent<MeshFilter>().sharedMesh.Copy();
                     }
 
                     DestroyImmediate(cube);
                 }
 
-                return _sharedMesh;
+                return m_SharedMesh;
             }
         }
 
