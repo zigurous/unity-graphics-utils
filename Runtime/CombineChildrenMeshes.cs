@@ -6,6 +6,7 @@ namespace Zigurous.Graphics
     /// Combines the meshes of the children of the game object into one mesh.
     /// </summary>
     [RequireComponent(typeof(MeshFilter))]
+    [RequireComponent(typeof(MeshRenderer))]
     [AddComponentMenu("Zigurous/Graphics/Combine Children Meshes")]
     public sealed class CombineChildrenMeshes : MonoBehaviour
     {
@@ -20,6 +21,12 @@ namespace Zigurous.Graphics
         /// </summary>
         [Tooltip("Removes the child meshes from the game object after combining.")]
         public bool removeChildMeshes = true;
+
+        /// <summary>
+        /// Combines all of the meshes into a single submesh.
+        /// </summary>
+        [Tooltip("Combines all of the meshes into a single submesh.")]
+        public bool mergeSubmeshes = true;
 
         /// <summary>
         /// Optimizes the combined mesh data to improve rendering performance.
@@ -79,7 +86,7 @@ namespace Zigurous.Graphics
             // Create a new mesh from all of the combined children
             Mesh combinedMesh = new Mesh();
             combinedMesh.name = "Combined Mesh";
-            combinedMesh.CombineMeshes(combine);
+            combinedMesh.CombineMeshes(combine, mergeSubmeshes);
 
             if (optimizeMesh) {
                 combinedMesh.Optimize();
