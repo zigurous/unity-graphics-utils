@@ -127,11 +127,27 @@ namespace Zigurous.Graphics
         /// </summary>
         public bool invalidated { get; internal set; }
 
+        /// <summary>
+        /// Unity lifecycle method to handle initialization.
+        /// </summary>
         protected virtual void Awake()
         {
             renderer = GetComponent<Renderer>();
         }
 
+        /// <summary>
+        /// Unity lifecycle method to handle the behavior being enabled.
+        /// </summary>
+        protected virtual void OnEnable()
+        {
+            if (Application.isPlaying) {
+                Draw();
+            }
+        }
+
+        /// <summary>
+        /// Unity lifecycle method to handle editor validation.
+        /// </summary>
         protected virtual void OnValidate()
         {
             invalidated = true;
@@ -146,13 +162,6 @@ namespace Zigurous.Graphics
 
             if (renderer == null) {
                 renderer = GetComponent<Renderer>();
-            }
-        }
-
-        protected virtual void OnEnable()
-        {
-            if (Application.isPlaying) {
-                Draw();
             }
         }
 

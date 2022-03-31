@@ -87,6 +87,7 @@ namespace Zigurous.Graphics
             }
         }
 
+        /// <inheritdoc/>
         protected override void OnValidate()
         {
             base.OnValidate();
