@@ -62,7 +62,7 @@ namespace Zigurous.Graphics
         public CheckerboardSettings checkerboard = new CheckerboardSettings(4, 4, Color.white, Color.black);
 
         /// <inheritdoc/>
-        protected override void SetPixels(Texture2D texture)
+        public override void SetPixels(Texture2D texture)
         {
             int rectWidth = texture.width / checkerboard.columns;
             int rectHeight = texture.height / checkerboard.rows;

@@ -232,7 +232,7 @@ namespace Zigurous.Graphics
         /// Sets the pixels of the texture.
         /// </summary>
         /// <param name="texture">The texture to set the pixels on.</param>
-        protected abstract void SetPixels(Texture2D texture);
+        public abstract void SetPixels(Texture2D texture);
 
     }
 
