@@ -128,7 +128,7 @@ namespace Zigurous.Graphics
         public bool invalidated { get; internal set; }
 
         /// <summary>
-        /// Unity lifecycle method to handle initialization.
+        /// A Unity lifecycle method called when the behavior is initialized.
         /// </summary>
         protected virtual void Awake()
         {
@@ -136,7 +136,7 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Unity lifecycle method to handle the behavior being enabled.
+        /// A Unity lifecycle method called when the behavior is enabled.
         /// </summary>
         protected virtual void OnEnable()
         {
@@ -146,7 +146,7 @@ namespace Zigurous.Graphics
         }
 
         /// <summary>
-        /// Unity lifecycle method to handle editor validation.
+        /// A Unity lifecycle method called during editor validation.
         /// </summary>
         protected virtual void OnValidate()
         {
