@@ -8,18 +8,24 @@ The **Graphics Utils** package provides scripts and utilities for graphics and r
 
 <hr/>
 
-## 📌 Overview
+## Overview
 
-- [Scripting API](/api/Zigurous.Graphics)
-- [Installation](/manual/installation)
-- [Changelog](/changelog)
-- [License](/license)
+#### ⚙️ [Installation](/installation)
+
+#### 🧰 [Scripting API](/api/Zigurous.Graphics)
+
+#### 📋 [Changelog](/changelog)
+
+#### ⚖️ [License](/license)
 
 <hr/>
 
-## 📖 Reference
+## Reference
 
-- [Material Tiling](/manual/material-tiling)
-- [Custom Meshes](/manual/custom-meshes)
-- [Shader Properties](/manual/shader-properties)
-- [Texture Drawers](/manual/texture-drawers)
+#### 🛤️ [Material Tiling](/manual/material-tiling)
+
+#### 🔰 [Custom Meshes](/manual/custom-meshes)
+
+#### 🌌 [Shader Properties](/manual/shader-properties)
+
+#### 🖼️ [Texture Drawers](/manual/texture-drawers)
