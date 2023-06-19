@@ -7,20 +7,24 @@ namespace Zigurous.Graphics
 {
     public static class MeshFilterExtensions
     {
-        #if UNITY_EDITOR
         /// <summary>
         /// Saves the mesh of the filter as a project asset (Editor only).
         /// </summary>
         /// <param name="filter">The mesh filter to save the mesh of.</param>
         public static void SaveMesh(this MeshFilter filter)
         {
-            if (filter != null && filter.mesh != null) {
-                AssetDatabase.CreateAsset(filter.mesh, "Assets/" + filter.mesh.name + ".mesh");
+            #if UNITY_EDITOR
+            if (filter != null)
+            {
+                if (Application.isPlaying) {
+                    AssetDatabase.CreateAsset(filter.mesh, $"Assets/{filter.mesh.name}.mesh");
+                } else {
+                    AssetDatabase.CreateAsset(filter.sharedMesh, $"Assets/{filter.mesh.name}.mesh");
+                }
             }
+            #endif
         }
-        #endif
 
-        #if UNITY_EDITOR
         /// <summary>
         /// Saves the mesh of the filter as a project asset (Editor only).
         /// </summary>
@@ -28,11 +32,17 @@ namespace Zigurous.Graphics
         /// <param name="assetName">The name to save the asset as.</param>
         public static void SaveMesh(this MeshFilter filter, string assetName)
         {
-            if (filter != null && filter.mesh != null) {
-                AssetDatabase.CreateAsset(filter.mesh, "Assets/" + assetName + ".mesh");
+            #if UNITY_EDITOR
+            if (filter != null)
+            {
+                if (Application.isPlaying) {
+                    AssetDatabase.CreateAsset(filter.mesh, $"Assets/{assetName}.mesh");
+                } else {
+                    AssetDatabase.CreateAsset(filter.sharedMesh, $"Assets/{assetName}.mesh");
+                }
             }
+            #endif
         }
-        #endif
 
         /// <summary>
         /// Combines the meshes of the mesh filters into one mesh.
