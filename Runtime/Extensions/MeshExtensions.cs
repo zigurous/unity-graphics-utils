@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+﻿#if UNITY_EDITOR
 using UnityEditor;
 #endif
 using UnityEngine;
@@ -133,6 +133,24 @@ namespace Zigurous.Graphics
             }
 
             return triangles;
+        }
+
+        /// <summary>
+        /// Calculates and assigns the UV coordinates of the mesh using its verticies.
+        /// </summary>
+        /// <param name="mesh">The mesh to calculate and assign the UV coordinates to.</param>
+        public static void RecalculateUV(this Mesh mesh)
+        {
+            Bounds bounds = mesh.bounds;
+
+            Vector3[] verticies = mesh.vertices;
+            Vector2[] uvs = new Vector2[verticies.Length];
+
+            for (int i = 0; i < verticies.Length; i++) {
+                uvs[i] = new Vector2(verticies[i].x / bounds.size.x, verticies[i].y / bounds.size.y);
+            }
+
+            mesh.uv = uvs;
         }
 
     }
