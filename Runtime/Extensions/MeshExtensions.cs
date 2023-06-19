@@ -19,7 +19,7 @@ namespace Zigurous.Graphics
         {
             #if UNITY_EDITOR
             if (mesh != null) {
-                AssetDatabase.CreateAsset(mesh, "Assets/" + assetName + ".mesh");
+                AssetDatabase.CreateAsset(mesh, $"Assets/{assetName}.mesh");
             }
             #endif
         }
