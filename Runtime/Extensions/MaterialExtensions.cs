@@ -19,14 +19,10 @@ namespace Zigurous.Graphics
 
             switch (mode)
             {
-                case 1:
-                    return RenderingMode.Cutout;
-                case 2:
-                    return RenderingMode.Fade;
-                case 3:
-                    return RenderingMode.Transparent;
-                default:
-                    return RenderingMode.Opaque;
+                case 1: return RenderingMode.Cutout;
+                case 2: return RenderingMode.Fade;
+                case 3: return RenderingMode.Transparent;
+                default: return RenderingMode.Opaque;
             }
         }
 

@@ -6,8 +6,9 @@ namespace Zigurous.Graphics
     /// Generates a new cube mesh and applies it to the mesh filter.
     /// </summary>
     [ExecuteAlways]
-    [RequireComponent(typeof(MeshFilter))]
     [AddComponentMenu("Zigurous/Graphics/Cube Mesh")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/CubeMesh")]
+    [RequireComponent(typeof(MeshFilter))]
     public sealed class CubeMesh : MonoBehaviour
     {
         private static Mesh m_SharedMesh;

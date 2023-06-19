@@ -3,13 +3,19 @@
 namespace Zigurous.Graphics
 {
     /// <summary>
-    /// Combines the meshes of the children of the game object into one mesh.
+    /// Combines children meshes into one mesh.
     /// </summary>
-    [RequireComponent(typeof(MeshFilter))]
-    [RequireComponent(typeof(MeshRenderer))]
     [AddComponentMenu("Zigurous/Graphics/Combine Children Meshes")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/CombineChildrenMeshes")]
+    [RequireComponent(typeof(MeshFilter))]
     public sealed class CombineChildrenMeshes : MonoBehaviour
     {
+        /// <summary>
+        /// The name of the combined mesh.
+        /// </summary>
+        [Tooltip("The name of the combined mesh.")]
+        public string combinedMeshName = "Combined Mesh";
+
         /// <summary>
         /// Combines the mesh on start, otherwise it needs to be called manually.
         /// </summary>
@@ -17,10 +23,10 @@ namespace Zigurous.Graphics
         public bool combineOnStart = true;
 
         /// <summary>
-        /// Removes the child meshes from the game object after combining.
+        /// Destroys the child game objects after combining.
         /// </summary>
-        [Tooltip("Removes the child meshes from the game object after combining.")]
-        public bool removeChildMeshes = true;
+        [Tooltip("Destroys the child game objects after combining.")]
+        public bool deleteChildren = true;
 
         /// <summary>
         /// Combines all of the meshes into a single submesh.
@@ -40,6 +46,11 @@ namespace Zigurous.Graphics
         [Tooltip("Recalculates the bounding volume of the combined mesh.")]
         public bool recalculateBounds = true;
 
+        private void Reset()
+        {
+            enabled = false;
+        }
+
         private void Start()
         {
             MeshFilter parent = GetComponent<MeshFilter>();
@@ -56,7 +67,7 @@ namespace Zigurous.Graphics
         public Mesh Combine()
         {
             MeshFilter[] children = GetComponentsInChildren<MeshFilter>();
-            CombineInstance[] combine = new CombineInstance[children.Length - 1];
+            CombineInstance[] combine = new CombineInstance[children.Length];
 
             int submesh = 0;
 
@@ -64,28 +75,27 @@ namespace Zigurous.Graphics
             {
                 MeshFilter child = children[i];
 
-                // Ignore the parent mesh
-                if (child.transform == transform) {
+                if (child.mesh == null) {
                     continue;
                 }
 
-                // Create a mesh combine instance
                 CombineInstance instance = new CombineInstance();
                 instance.mesh = child.mesh;
-                instance.transform = Matrix4x4.TRS(child.transform.localPosition, child.transform.localRotation, child.transform.localScale);
+                instance.transform = child.transform.localToWorldMatrix;
                 combine[submesh++] = instance;
 
-                // Destroy the child mesh
-                if (removeChildMeshes)
+                if (child.transform != this.transform)
                 {
-                    Destroy(child.GetComponent<MeshRenderer>());
-                    Destroy(child);
+                    if (deleteChildren) {
+                        Destroy(child.gameObject);
+                    } else {
+                        child.gameObject.SetActive(false);
+                    }
                 }
             }
 
-            // Create a new mesh from all of the combined children
             Mesh combinedMesh = new Mesh();
-            combinedMesh.name = "Combined Mesh";
+            combinedMesh.name = combinedMeshName;
             combinedMesh.CombineMeshes(combine, mergeSubmeshes);
 
             if (optimizeMesh) {

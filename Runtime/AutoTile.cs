@@ -1,17 +1,22 @@
 ﻿#if UNITY_EDITOR
 using UnityEditor;
+#if UNITY_2021_2_OR_NEWER
+using UnityEditor.SceneManagement;
+#else
 using UnityEditor.Experimental.SceneManagement;
+#endif
 #endif
 using UnityEngine;
 
 namespace Zigurous.Graphics
 {
     /// <summary>
-    /// Automatically tiles the material textures based on the object's scale.
+    /// Automatically tiles the material's textures based on the object's scale.
     /// </summary>
     [ExecuteAlways]
-    [RequireComponent(typeof(Renderer))]
     [AddComponentMenu("Zigurous/Graphics/Auto Tile")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/AutoTile")]
+    [RequireComponent(typeof(Renderer))]
     public sealed class AutoTile : MonoBehaviour
     {
         /// <summary>
@@ -54,7 +59,7 @@ namespace Zigurous.Graphics
         /// A representation of a submesh that can be individually tiled.
         /// </summary>
         [System.Serializable]
-        public sealed class Submesh
+        public sealed class SubmeshTiling
         {
             #if UNITY_EDITOR
             /// <summary>
@@ -98,7 +103,7 @@ namespace Zigurous.Graphics
         /// The submeshes that are tiled on the renderer.
         /// </summary>
         [Tooltip("The submeshes that are tiled on the renderer.")]
-        public Submesh[] submeshes = new Submesh[1] { new Submesh() };
+        public SubmeshTiling[] submeshes = new SubmeshTiling[1] { new SubmeshTiling() };
 
         /// <summary>
         /// The names of the textures that are tiled on the material.
@@ -131,11 +136,11 @@ namespace Zigurous.Graphics
 
                 if (mesh != null)
                 {
-                    submeshes = new Submesh[mesh.subMeshCount];
+                    submeshes = new SubmeshTiling[mesh.subMeshCount];
 
                     for (int i = 0; i < submeshes.Length; i++)
                     {
-                        Submesh submesh = new Submesh();
+                        SubmeshTiling submesh = new SubmeshTiling();
                         submesh.submeshIndex = i;
                         submeshes[i] = submesh;
                     }
@@ -199,7 +204,7 @@ namespace Zigurous.Graphics
         {
             for (int i = 0; i < submeshes.Length; i++)
             {
-                Submesh submesh = submeshes[i];
+                SubmeshTiling submesh = submeshes[i];
 
                 if (submesh.submeshIndex >= 0 && submesh.submeshIndex < materials.Length) {
                     UpdateMaterial(materials[submesh.submeshIndex], submesh);
@@ -212,7 +217,7 @@ namespace Zigurous.Graphics
         {
             for (int i = 0; i < submeshes.Length; i++)
             {
-                Submesh submesh = submeshes[i];
+                SubmeshTiling submesh = submeshes[i];
 
                 if (submesh.submeshIndex >= 0 && submesh.submeshIndex < materials.Length)
                 {
@@ -236,7 +241,7 @@ namespace Zigurous.Graphics
         }
         #endif
 
-        private void UpdateMaterial(Material material, Submesh submesh)
+        private void UpdateMaterial(Material material, SubmeshTiling submesh)
         {
             if (material == null || textureNames == null) {
                 return;

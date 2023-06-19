@@ -10,7 +10,6 @@ namespace Zigurous.Graphics
     /// </summary>
     public static class MeshExtensions
     {
-        #if UNITY_EDITOR
         /// <summary>
         /// Saves the mesh as a project asset (Editor only).
         /// </summary>
@@ -18,11 +17,12 @@ namespace Zigurous.Graphics
         /// <param name="assetName">The name to save the asset as.</param>
         public static void Save(this Mesh mesh, string assetName)
         {
+            #if UNITY_EDITOR
             if (mesh != null) {
-                AssetDatabase.CreateAsset(mesh, "Assets/" + assetName + ".mesh");
+                AssetDatabase.CreateAsset(mesh, $"Assets/{assetName}.mesh");
             }
+            #endif
         }
-        #endif
 
         /// <summary>
         /// Returns a new copy of the mesh.
@@ -133,6 +133,24 @@ namespace Zigurous.Graphics
             }
 
             return triangles;
+        }
+
+        /// <summary>
+        /// Calculates and assigns the UV coordinates of the mesh using its verticies.
+        /// </summary>
+        /// <param name="mesh">The mesh to calculate and assign the UV coordinates to.</param>
+        public static void RecalculateUV(this Mesh mesh)
+        {
+            Bounds bounds = mesh.bounds;
+
+            Vector3[] verticies = mesh.vertices;
+            Vector2[] uvs = new Vector2[verticies.Length];
+
+            for (int i = 0; i < verticies.Length; i++) {
+                uvs[i] = new Vector2(verticies[i].x / bounds.size.x, verticies[i].y / bounds.size.y);
+            }
+
+            mesh.uv = uvs;
         }
 
     }
