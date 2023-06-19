@@ -5,6 +5,7 @@ namespace Zigurous.Graphics
     /// <summary>
     /// The base class to draw a custom texture at runtime.
     /// </summary>
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/TextureDrawer")]
     public abstract class TextureDrawer : ScriptableObject
     {
         /// <summary>

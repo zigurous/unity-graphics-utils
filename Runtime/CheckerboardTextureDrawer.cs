@@ -5,7 +5,6 @@ namespace Zigurous.Graphics
     /// <summary>
     /// Draws a texture of a checkerboard pattern.
     /// </summary>
-    [AddComponentMenu("Zigurous/Graphics/Checkerboard Texture Drawer")]
     [CreateAssetMenu(menuName = "Zigurous/Graphics/Checkerboard Texture Drawer")]
     [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/CheckerboardTextureDrawer")]
     public sealed class CheckerboardTextureDrawer : TextureDrawer

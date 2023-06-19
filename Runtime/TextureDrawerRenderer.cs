@@ -4,6 +4,8 @@ using UnityEngine;
 namespace Zigurous.Graphics
 {
     [ExecuteAlways]
+    [AddComponentMenu("Zigurous/Graphics/Texture Drawer Renderer")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/TextureDrawerRenderer")]
     [RequireComponent(typeof(Renderer))]
     public sealed class TextureDrawerRenderer : MonoBehaviour
     {
