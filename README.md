@@ -6,10 +6,11 @@ The **Graphics Utils** package provides scripts and utilities for graphics and r
 
 ## Reference
 
-- [Auto Tiling](https://docs.zigurous.com/com.zigurous.graphics/manual/material-tiling)
 - [Custom Meshes](https://docs.zigurous.com/com.zigurous.graphics/manual/custom-meshes)
-- [Shader Properties](https://docs.zigurous.com/com.zigurous.graphics/manual/shader-properties)
+- [Procedural Generation](https://docs.zigurous.com/com.zigurous.graphics/manual/procedural-generation)
+- [Material Tiling](https://docs.zigurous.com/com.zigurous.graphics/manual/material-tiling)
 - [Texture Drawers](https://docs.zigurous.com/com.zigurous.graphics/manual/texture-drawers)
+- [Extension Methods](https://docs.zigurous.com/com.zigurous.graphics/manual/extension-methods)
 
 ## Installation
 

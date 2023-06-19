@@ -22,10 +22,12 @@ The **Graphics Utils** package provides scripts and utilities for graphics and r
 
 ## Reference
 
-#### 🛤️ [Material Tiling](/manual/material-tiling)
-
 #### 🔰 [Custom Meshes](/manual/custom-meshes)
 
-#### 🌌 [Shader Properties](/manual/shader-properties)
+#### ⛰️ [Procedural Generation](/manual/procedural-generation)
+
+#### 🛤️ [Material Tiling](/manual/material-tiling)
 
 #### 🖼️ [Texture Drawers](/manual/texture-drawers)
+
+#### 🔌 [Extension Methods](/manual/extension-methods)

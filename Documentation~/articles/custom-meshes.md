@@ -11,7 +11,7 @@ The **Graphics Utils** package includes a few custom cube meshes.
 - `Cube-Inverted.mesh`: cube mesh with inverted normals and triangles (inside-out)
 - `Cube-Tiling.mesh` cube mesh designed specifically for [Material Tiling](/manual/material-tiling)
 
-There are also 3 different scripts to generate cube meshes at runtime:
+There are also 3 different scripts to generate these cube meshes at runtime:
 
 - [CubeMesh](/api/Zigurous.Graphics/CubeMesh)
 - [CubeMesh3](/api/Zigurous.Graphics/CubeMesh3)
@@ -38,7 +38,7 @@ int[] triangles = mesh.InvertedTriangles();
 
 ## 🔰 Combining Meshes
 
-The **Graphics Utils** package includes a script to combine multiple meshes into a single mesh. This can sometimes be used to improve rendering performance, or as a way to create custom meshes and turn them into assets. Add the [CombineChildrenMeshes](/api/Zigurous.Graphics/CombineChildrenMeshes) script to a game object that includes an empty mesh filter. The script will combine the meshes of the children objects and apply the new combined mesh to the parent mesh filter.
+The **Graphics Utils** package includes a script to combine multiple meshes into a single mesh. This can be used to improve rendering performance, or as a way to create custom meshes and turn them into assets. Add the [CombineChildrenMeshes](/api/Zigurous.Graphics/CombineChildrenMeshes) script to the parent game object of children meshes. The combined mesh will be assigned to the mesh filter of the parent object, and the child game objects will either be destroyed or disabled.
 
 You can also manually combine meshes through an extension method:
 
@@ -51,7 +51,7 @@ Mesh combinedMesh = filters.CombineMesh();
 
 ## 💾 Saving Meshes
 
-Often when generating meshes at runtime, you may want to save that mesh as an asset for future use so you do not need to regenerate them over and over. The **Graphics Utils** package comes with a [SaveMesh](/api/Zigurous.Graphics/SaveMesh) script that will save a mesh as an asset at runtime.
+Often when generating meshes at runtime, you may want to save that mesh as an asset for future use so you don't need to regenerate them again. The **Graphics Utils** package comes with a [SaveMesh](/api/Zigurous.Graphics/SaveMesh) script that will save a mesh as an asset at runtime.
 
 You can also manually save a mesh through extension methods:
 

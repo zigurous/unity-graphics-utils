@@ -3,7 +3,7 @@
 namespace Zigurous.Graphics
 {
     /// <summary>
-    /// Combines the meshes of the children of the game object into one mesh.
+    /// Combines children meshes into one mesh.
     /// </summary>
     [AddComponentMenu("Zigurous/Graphics/Combine Children Meshes")]
     [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/CombineChildrenMeshes")]
@@ -79,13 +79,11 @@ namespace Zigurous.Graphics
                     continue;
                 }
 
-                // Create a mesh combine instance
                 CombineInstance instance = new CombineInstance();
                 instance.mesh = child.mesh;
                 instance.transform = child.transform.localToWorldMatrix;
                 combine[submesh++] = instance;
 
-                // Destroy the child mesh
                 if (child.transform != this.transform)
                 {
                     if (deleteChildren) {
@@ -96,7 +94,6 @@ namespace Zigurous.Graphics
                 }
             }
 
-            // Create a new mesh from all of the combined children
             Mesh combinedMesh = new Mesh();
             combinedMesh.name = combinedMeshName;
             combinedMesh.CombineMeshes(combine, mergeSubmeshes);

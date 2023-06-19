@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Zigurous.Graphics
 {
+    /// <summary>
+    /// Renders the result of a <see cref="TextureDrawer"/>.
+    /// </summary>
     [ExecuteAlways]
     [AddComponentMenu("Zigurous/Graphics/Texture Drawer Renderer")]
     [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/TextureDrawerRenderer")]

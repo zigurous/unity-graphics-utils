@@ -24,20 +24,24 @@
     "title": "📖 Reference",
     "items": [
       {
-        "name": "Material Tiling",
-        "path": "/manual/material-tiling"
-      },
-      {
         "name": "Custom Meshes",
         "path": "/manual/custom-meshes"
       },
       {
-        "name": "Shader Properties",
-        "path": "/manual/shader-properties"
+        "name": "Procedural Generation",
+        "path": "/manual/procedural-generation"
+      },
+      {
+        "name": "Material Tiling",
+        "path": "/manual/material-tiling"
       },
       {
         "name": "Texture Drawers",
         "path": "/manual/texture-drawers"
+      },
+      {
+        "name": "Extension Methods",
+        "path": "/manual/extension-methods"
       }
     ]
   },
