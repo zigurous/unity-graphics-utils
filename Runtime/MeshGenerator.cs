@@ -8,6 +8,14 @@ namespace Zigurous.Graphics
     /// </summary>
     public static class MeshGenerator
     {
+        /// <summary>
+        /// A delegate function to calculate the vertex for a given point.
+        /// </summary>
+        /// <param name="x">The coordinate of the point along the x-axis.</param>
+        /// <param name="y">The coordinate of the point along the y-axis.</param>
+        /// <param name="u">The normalized coordinate of the point along the x-axis in the range [0..1].</param>
+        /// <param name="v">The normalized coordinate of the point along the y-axis in the range [0..1].</param>
+        /// <returns>The vertex for the given point.</returns>
         public delegate Vector3 VertexGenerator(int x, int y, float u, float v);
 
         /// <summary>
