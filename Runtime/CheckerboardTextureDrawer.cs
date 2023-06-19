@@ -6,73 +6,46 @@ namespace Zigurous.Graphics
     /// Draws a texture of a checkerboard pattern.
     /// </summary>
     [AddComponentMenu("Zigurous/Graphics/Checkerboard Texture Drawer")]
+    [CreateAssetMenu(menuName = "Zigurous/Graphics/Checkerboard Texture Drawer")]
     [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/CheckerboardTextureDrawer")]
     public sealed class CheckerboardTextureDrawer : TextureDrawer
     {
         /// <summary>
-        /// The checkerboard settings of a <see cref="CheckerboardTextureDrawer"/>.
+        /// The number of rows in the checkerboard.
         /// </summary>
-        [System.Serializable]
-        public struct CheckerboardSettings
-        {
-            /// <summary>
-            /// The number of rows in the checkerboard.
-            /// </summary>
-            [Tooltip("The number of rows in the checkerboard.")]
-            public int rows;
-
-            /// <summary>
-            /// The number of columns in the checkerboard.
-            /// </summary>
-            [Tooltip("The number of columns in the checkerboard.")]
-            public int columns;
-
-            /// <summary>
-            /// The first color of the checkerboard.
-            /// </summary>
-            [Tooltip("The first color of the checkerboard.")]
-            public Color colorA;
-
-            /// <summary>
-            /// The second color of the checkerboard.
-            /// </summary>
-            [Tooltip("The second color of the checkerboard.")]
-            public Color colorB;
-
-            /// <summary>
-            /// Creates new checkerboard settings with the specified values.
-            /// </summary>
-            /// <param name="rows">The number of rows in the checkerboard.</param>
-            /// <param name="columns">The number of columns in the checkerboard.</param>
-            /// <param name="colorA">The first color of the checkerboard.</param>
-            /// <param name="colorB">The second color of the checkerboard.</param>
-            public CheckerboardSettings(int rows, int columns, Color colorA, Color colorB)
-            {
-                this.rows = rows;
-                this.columns = columns;
-                this.colorA = colorA;
-                this.colorB = colorB;
-            }
-
-        }
+        [Header("Checkerboard Settings")]
+        [Tooltip("The number of rows in the checkerboard.")]
+        public int rows = 4;
 
         /// <summary>
-        /// The checkerboard settings.
+        /// The number of columns in the checkerboard.
         /// </summary>
-        [Tooltip("The checkerboard settings.")]
-        public CheckerboardSettings checkerboard = new CheckerboardSettings(4, 4, Color.white, Color.black);
+        [Tooltip("The number of columns in the checkerboard.")]
+        public int columns = 4;
+
+        /// <summary>
+        /// The first color of the checkerboard.
+        /// </summary>
+        [Tooltip("The first color of the checkerboard.")]
+        public Color colorA = Color.white;
+
+        /// <summary>
+        /// The second color of the checkerboard.
+        /// </summary>
+        [Tooltip("The second color of the checkerboard.")]
+        public Color colorB = Color.black;
 
         /// <inheritdoc/>
         public override void SetPixels(Texture2D texture)
         {
-            int rectWidth = texture.width / checkerboard.columns;
-            int rectHeight = texture.height / checkerboard.rows;
+            int rectWidth = texture.width / columns;
+            int rectHeight = texture.height / rows;
 
-            for (int row = 0; row < checkerboard.rows; row++)
+            for (int row = 0; row < rows; row++)
             {
-                for (int col = 0; col < checkerboard.columns; col++)
+                for (int col = 0; col < columns; col++)
                 {
-                    Color color = (row + col) % 2 == 0 ? checkerboard.colorA : checkerboard.colorB;
+                    Color color = (row + col) % 2 == 0 ? colorA : colorB;
 
                     int positionX = col * rectWidth;
                     int positionY = row * rectHeight;
@@ -85,20 +58,6 @@ namespace Zigurous.Graphics
                         }
                     }
                 }
-            }
-        }
-
-        /// <inheritdoc/>
-        protected override void OnValidate()
-        {
-            base.OnValidate();
-
-            if (checkerboard.rows < 2) {
-                checkerboard.rows = 2;
-            }
-
-            if (checkerboard.columns < 2) {
-                checkerboard.columns = 2;
             }
         }
 
