@@ -5,8 +5,9 @@ namespace Zigurous.Graphics
     /// <summary>
     /// Saves the mesh of a mesh filter into a project asset.
     /// </summary>
-    [RequireComponent(typeof(MeshFilter))]
     [AddComponentMenu("Zigurous/Graphics/Save Mesh")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/SaveMesh")]
+    [RequireComponent(typeof(MeshFilter))]
     public sealed class SaveMesh : MonoBehaviour
     {
         /// <summary>

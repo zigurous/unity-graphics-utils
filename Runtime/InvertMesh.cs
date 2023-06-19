@@ -5,8 +5,9 @@ namespace Zigurous.Graphics
     /// <summary>
     /// Inverts the normals and triangles of the mesh so it renders inside-out.
     /// </summary>
-    [RequireComponent(typeof(MeshFilter))]
     [AddComponentMenu("Zigurous/Graphics/Invert Mesh")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/InvertMesh")]
+    [RequireComponent(typeof(MeshFilter))]
     public sealed class InvertMesh : MonoBehaviour
     {
         /// <summary>

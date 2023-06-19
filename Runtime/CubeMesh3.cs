@@ -7,8 +7,9 @@ namespace Zigurous.Graphics
     /// applies it to the mesh filter.
     /// </summary>
     [ExecuteAlways]
-    [RequireComponent(typeof(MeshFilter))]
     [AddComponentMenu("Zigurous/Graphics/Cube Mesh 3")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/CubeMesh3")]
+    [RequireComponent(typeof(MeshFilter))]
     public sealed class CubeMesh3 : MonoBehaviour
     {
         /// <summary>

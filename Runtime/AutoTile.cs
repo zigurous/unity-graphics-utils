@@ -14,8 +14,9 @@ namespace Zigurous.Graphics
     /// Automatically tiles the material textures based on the object's scale.
     /// </summary>
     [ExecuteAlways]
-    [RequireComponent(typeof(Renderer))]
     [AddComponentMenu("Zigurous/Graphics/Auto Tile")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/AutoTile")]
+    [RequireComponent(typeof(Renderer))]
     public sealed class AutoTile : MonoBehaviour
     {
         /// <summary>

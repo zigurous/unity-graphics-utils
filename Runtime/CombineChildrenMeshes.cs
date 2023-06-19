@@ -5,9 +5,10 @@ namespace Zigurous.Graphics
     /// <summary>
     /// Combines the meshes of the children of the game object into one mesh.
     /// </summary>
+    [AddComponentMenu("Zigurous/Graphics/Combine Children Meshes")]
+    [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/CombineChildrenMeshes")]
     [RequireComponent(typeof(MeshFilter))]
     [RequireComponent(typeof(MeshRenderer))]
-    [AddComponentMenu("Zigurous/Graphics/Combine Children Meshes")]
     public sealed class CombineChildrenMeshes : MonoBehaviour
     {
         /// <summary>
