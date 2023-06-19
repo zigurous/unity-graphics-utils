@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEditor;
+#endif
+using UnityEngine;
 
 namespace Zigurous.Graphics
 {
     /// <summary>
-    /// Saves the mesh of a mesh filter into a project asset.
+    /// Saves the mesh of a mesh filter as a project asset.
     /// </summary>
     [AddComponentMenu("Zigurous/Graphics/Save Mesh")]
     [HelpURL("https://docs.zigurous.com/com.zigurous.graphics/api/Zigurous.Graphics/SaveMesh")]
@@ -14,7 +17,7 @@ namespace Zigurous.Graphics
         /// The name of the saved asset. The mesh name will be used if not set.
         /// </summary>
         [Tooltip("The name of the saved asset. The mesh name will be used if not set.")]
-        public string assetName;
+        public string assetName = "New Mesh";
 
         /// <summary>
         /// Saves the mesh on start, otherwise it needs to be called manually.
@@ -38,18 +41,17 @@ namespace Zigurous.Graphics
                     assetName = filter.sharedMesh.name;
                 }
             }
+
+            enabled = false;
         }
 
         private void Start()
         {
-            #if UNITY_EDITOR
             if (saveOnStart) {
                 Save();
             }
-            #endif
         }
 
-        #if UNITY_EDITOR
         /// <summary>
         /// Saves the mesh as a project asset.
         /// </summary>
@@ -57,10 +59,24 @@ namespace Zigurous.Graphics
         {
             MeshFilter filter = GetComponent<MeshFilter>();
 
-            if (assetName.Length > 0) {
-                filter.SaveMesh(assetName);
-            } else {
+            if (string.IsNullOrEmpty(assetName)) {
                 filter.SaveMesh();
+            } else {
+                filter.SaveMesh(assetName);
+            }
+        }
+
+        #if UNITY_EDITOR
+        [MenuItem("CONTEXT/SaveMesh/Save Mesh")]
+        private static void ContextMenu_Save()
+        {
+            if (Selection.activeGameObject != null)
+            {
+                SaveMesh mesh = Selection.activeGameObject.GetComponent<SaveMesh>();
+
+                if (mesh != null) {
+                    mesh.Save();
+                }
             }
         }
         #endif
