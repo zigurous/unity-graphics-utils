@@ -103,7 +103,7 @@ namespace Zigurous.Graphics
         /// The submeshes that are tiled on the renderer.
         /// </summary>
         [Tooltip("The submeshes that are tiled on the renderer.")]
-        public SubmeshTiling[] submeshes = new SubmeshTiling[1] { new SubmeshTiling() };
+        public SubmeshTiling[] submeshes = new SubmeshTiling[1] { new() };
 
         /// <summary>
         /// The names of the textures that are tiled on the material.
@@ -128,9 +128,7 @@ namespace Zigurous.Graphics
 
         private void Reset()
         {
-            MeshFilter filter = GetComponent<MeshFilter>();
-
-            if (filter != null)
+            if (TryGetComponent(out MeshFilter filter))
             {
                 Mesh mesh = Application.isPlaying ? filter.mesh : filter.sharedMesh;
 
@@ -140,9 +138,9 @@ namespace Zigurous.Graphics
 
                     for (int i = 0; i < submeshes.Length; i++)
                     {
-                        SubmeshTiling submesh = new SubmeshTiling();
-                        submesh.submeshIndex = i;
-                        submeshes[i] = submesh;
+                        submeshes[i] = new() {
+                            submeshIndex = i
+                        };
                     }
                 }
             }
@@ -264,29 +262,16 @@ namespace Zigurous.Graphics
             Vector3 lossy = transform.lossyScale;
             Vector3 scale = Vector3.Scale(lossy, baseScale);
 
-            switch (axis)
+            return axis switch
             {
-                case Axis.X_Pos:
-                    return new Vector2(scale.z, scale.y);
-
-                case Axis.X_Neg:
-                    return -new Vector2(scale.z, scale.y);
-
-                case Axis.Y_Pos:
-                    return new Vector2(scale.x, scale.z);
-
-                case Axis.Y_Neg:
-                    return -new Vector2(scale.x, scale.z);
-
-                case Axis.Z_Pos:
-                    return new Vector2(scale.x, scale.y);
-
-                case Axis.Z_Neg:
-                    return -new Vector2(scale.x, scale.y);
-
-                default:
-                    return Vector2.zero;
-            }
+                Axis.X_Pos => new(scale.z, scale.y),
+                Axis.X_Neg => new(-scale.z, -scale.y),
+                Axis.Y_Pos => new(scale.x, scale.z),
+                Axis.Y_Neg => new(-scale.x, -scale.z),
+                Axis.Z_Pos => new(scale.x, scale.y),
+                Axis.Z_Neg => new(-scale.x, -scale.y),
+                _ => Vector2.zero,
+            };
         }
 
     }

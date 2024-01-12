@@ -69,14 +69,19 @@ namespace Zigurous.Graphics
                     continue;
                 }
 
-                CombineInstance instance = new CombineInstance();
-                instance.mesh = filter.mesh;
-                instance.transform = filter.transform.localToWorldMatrix;
+                CombineInstance instance = new()
+                {
+                    mesh = filter.mesh,
+                    transform = filter.transform.localToWorldMatrix
+                };
+
                 combine[submesh++] = instance;
             }
 
-            Mesh combinedMesh = new Mesh();
-            combinedMesh.name = combinedMeshName;
+            Mesh combinedMesh = new() {
+                name = combinedMeshName
+            };
+
             combinedMesh.CombineMeshes(combine);
 
             if (optimizeMesh) {

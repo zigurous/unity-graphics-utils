@@ -18,7 +18,7 @@ namespace Zigurous.Graphics
         /// </summary>
         [Header("Texture Settings")]
         [Tooltip("The width and height of the texture.")]
-        public Vector2Int size = new Vector2Int(1024, 1024);
+        public Vector2Int size = new(1024, 1024);
 
         /// <summary>
         /// The filter mode of the texture.

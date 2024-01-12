@@ -148,9 +148,7 @@ namespace Zigurous.Graphics
         {
             if (Selection.activeGameObject != null)
             {
-                TextureDrawerRenderer renderer = Selection.activeGameObject.GetComponent<TextureDrawerRenderer>();
-
-                if (renderer != null)
+                if (Selection.activeGameObject.TryGetComponent(out TextureDrawerRenderer renderer))
                 {
                     if (renderer.m_UpdateInEditor) {
                         renderer.m_Invalidated = true;

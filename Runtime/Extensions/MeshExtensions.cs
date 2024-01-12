@@ -31,11 +31,12 @@ namespace Zigurous.Graphics
         /// <returns>A new copy of the mesh.</returns>
         public static Mesh Copy(this Mesh mesh)
         {
-            Mesh copy = new Mesh();
-
-            copy.indexFormat = mesh.indexFormat;
-            copy.subMeshCount = mesh.subMeshCount;
-            copy.vertices = mesh.vertices;
+            Mesh copy = new()
+            {
+                indexFormat = mesh.indexFormat,
+                subMeshCount = mesh.subMeshCount,
+                vertices = mesh.vertices
+            };
 
             for (int m = 0; m < mesh.subMeshCount; m++) {
                 copy.SetTriangles(mesh.GetTriangles(m), m);

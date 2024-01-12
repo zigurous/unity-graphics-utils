@@ -45,15 +45,15 @@ namespace Zigurous.Graphics
         /// <param name="index">The index of the vertex.</param>
         public Vector3 this[int index]
         {
-            get
+            readonly get
             {
-                switch (index)
+                return index switch
                 {
-                    case 0: return v1;
-                    case 1: return v2;
-                    case 2: return v3;
-                    default: throw new IndexOutOfRangeException();
-                }
+                    0 => v1,
+                    1 => v2,
+                    2 => v3,
+                    _ => throw new IndexOutOfRangeException(),
+                };
             }
             set
             {
@@ -72,11 +72,11 @@ namespace Zigurous.Graphics
         /// </summary>
         /// <param name="other">The triangle to compare to.</param>
         /// <returns>True if the triangles are equal, false otherwise.</returns>
-        public bool Equals(Triangle other)
+        public readonly bool Equals(Triangle other)
         {
-            return this.v1 == other.v1 &&
-                   this.v2 == other.v2 &&
-                   this.v3 == other.v3;
+            return v1 == other.v1 &&
+                   v2 == other.v2 &&
+                   v3 == other.v3;
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Zigurous.Graphics
         /// </summary>
         /// <param name="other">The object to compare to.</param>
         /// <returns>True if the triangles are equal, false otherwise.</returns>
-        public override bool Equals(object other)
+        public override readonly bool Equals(object other)
         {
             if (other is Triangle triangle) {
                 return Equals(triangle);
@@ -97,25 +97,18 @@ namespace Zigurous.Graphics
         /// Returns the hash code of the triangle.
         /// </summary>
         /// <returns>The hash code of the triangle.</returns>
-        public override int GetHashCode()
+        public override readonly int GetHashCode()
         {
-            unchecked // Overflow is fine, just wrap
-            {
-                int hash = 17;
-                hash = hash * 31 + v1.GetHashCode();
-                hash = hash * 31 + v2.GetHashCode();
-                hash = hash * 31 + v3.GetHashCode();
-                return hash;
-            }
+            return HashCode.Combine(v1, v2, v3);
         }
 
         /// <summary>
         /// Converts the triangle to a string.
         /// </summary>
         /// <returns>The string representation of the triangle.</returns>
-        public override string ToString()
+        public override readonly string ToString()
         {
-            return $"{v1.ToString()} {v2.ToString()} {v3.ToString()}";
+            return $"{v1} {v2} {v3}";
         }
 
         /// <summary>

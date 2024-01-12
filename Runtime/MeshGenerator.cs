@@ -25,7 +25,7 @@ namespace Zigurous.Graphics
         /// <param name="height">The height of the grid of points.</param>
         public static Mesh Create(int width, int height)
         {
-            Mesh mesh = new Mesh();
+            Mesh mesh = new();
 
             if (width * height > 65535) {
                 mesh.indexFormat = IndexFormat.UInt32;
@@ -47,11 +47,9 @@ namespace Zigurous.Graphics
         /// <param name="vertexGenerator">A custom function to calculate the vertex for a given point.</param>
         public static Mesh Create(int width, int height, VertexGenerator vertexGenerator)
         {
-            if (vertexGenerator == null) {
-                vertexGenerator = DefaultVertexGenerator;
-            }
+            vertexGenerator ??= DefaultVertexGenerator;
 
-            Mesh mesh = new Mesh();
+            Mesh mesh = new();
 
             if (width * height > 65535) {
                 mesh.indexFormat = IndexFormat.UInt32;

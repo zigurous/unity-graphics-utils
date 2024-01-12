@@ -79,12 +79,15 @@ namespace Zigurous.Graphics
                     continue;
                 }
 
-                CombineInstance instance = new CombineInstance();
-                instance.mesh = child.mesh;
-                instance.transform = child.transform.localToWorldMatrix;
+                CombineInstance instance = new()
+                {
+                    mesh = child.mesh,
+                    transform = child.transform.localToWorldMatrix
+                };
+
                 combine[submesh++] = instance;
 
-                if (child.transform != this.transform)
+                if (child.transform != transform)
                 {
                     if (deleteChildren) {
                         Destroy(child.gameObject);
@@ -94,8 +97,10 @@ namespace Zigurous.Graphics
                 }
             }
 
-            Mesh combinedMesh = new Mesh();
-            combinedMesh.name = combinedMeshName;
+            Mesh combinedMesh = new() {
+                name = combinedMeshName
+            };
+
             combinedMesh.CombineMeshes(combine, mergeSubmeshes);
 
             if (optimizeMesh) {

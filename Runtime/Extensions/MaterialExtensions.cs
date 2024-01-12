@@ -16,14 +16,13 @@ namespace Zigurous.Graphics
         public static RenderingMode GetRenderingMode(this Material material)
         {
             int mode = (int)material.GetFloat(Identifier.Mode);
-
-            switch (mode)
+            return mode switch
             {
-                case 1: return RenderingMode.Cutout;
-                case 2: return RenderingMode.Fade;
-                case 3: return RenderingMode.Transparent;
-                default: return RenderingMode.Opaque;
-            }
+                1 => RenderingMode.Cutout,
+                2 => RenderingMode.Fade,
+                3 => RenderingMode.Transparent,
+                _ => RenderingMode.Opaque,
+            };
         }
 
         /// <summary>

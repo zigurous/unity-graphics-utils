@@ -72,9 +72,7 @@ namespace Zigurous.Graphics
         {
             if (Selection.activeGameObject != null)
             {
-                SaveMesh mesh = Selection.activeGameObject.GetComponent<SaveMesh>();
-
-                if (mesh != null) {
+                if (Selection.activeGameObject.TryGetComponent(out SaveMesh mesh)) {
                     mesh.Save();
                 }
             }

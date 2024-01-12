@@ -37,7 +37,7 @@ namespace Zigurous.Graphics
                 }
             }
 
-            List<int> indices = new List<int>();
+            List<int> indices = new();
 
             int nv = n;
             int count = 2 * nv;
@@ -105,7 +105,7 @@ namespace Zigurous.Graphics
                 A += pval.x * qval.y - qval.x * pval.y;
             }
 
-            return (A * 0.5f);
+            return A * 0.5f;
         }
 
         private static bool Snip(Vector2[] points, int u, int v, int w, int n, int[] V)
@@ -150,7 +150,7 @@ namespace Zigurous.Graphics
             cCROSSap = cx * apy - cy * apx;
             bCROSScp = bx * cpy - by * cpx;
 
-            return ((aCROSSbp >= 0f) && (bCROSScp >= 0f) && (cCROSSap >= 0f));
+            return (aCROSSbp >= 0f) && (bCROSScp >= 0f) && (cCROSSap >= 0f);
         }
 
     }

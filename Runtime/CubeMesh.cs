@@ -60,14 +60,14 @@ namespace Zigurous.Graphics
         /// The corners of the cube (Read only).
         /// </summary>
         public static readonly Vector3[] corners = {
-            new Vector3( 0.5f, -0.5f,  0.5f),
-            new Vector3(-0.5f, -0.5f,  0.5f),
-            new Vector3( 0.5f,  0.5f,  0.5f),
-            new Vector3(-0.5f,  0.5f,  0.5f),
-            new Vector3( 0.5f,  0.5f, -0.5f),
-            new Vector3(-0.5f,  0.5f, -0.5f),
-            new Vector3( 0.5f, -0.5f, -0.5f),
-            new Vector3(-0.5f, -0.5f, -0.5f),
+            new( 0.5f, -0.5f,  0.5f),
+            new(-0.5f, -0.5f,  0.5f),
+            new( 0.5f,  0.5f,  0.5f),
+            new(-0.5f,  0.5f,  0.5f),
+            new( 0.5f,  0.5f, -0.5f),
+            new(-0.5f,  0.5f, -0.5f),
+            new( 0.5f, -0.5f, -0.5f),
+            new(-0.5f, -0.5f, -0.5f),
         };
 
         /// <summary>
@@ -86,12 +86,12 @@ namespace Zigurous.Graphics
         /// The UV coordinates of the cube (Read only).
         /// </summary>
         public static readonly Vector2[] uv = {
-            new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 1), new Vector2(1, 1), // Front
-            new Vector2(0, 1), new Vector2(1, 1), new Vector2(0, 1), new Vector2(1, 1), // Back
-            new Vector2(0, 0), new Vector2(1, 0), new Vector2(0, 0), new Vector2(1, 0), // Top
-            new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 1), new Vector2(1, 0), // Bottom
-            new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 1), new Vector2(1, 0), // Left
-            new Vector2(0, 0), new Vector2(0, 1), new Vector2(1, 1), new Vector2(1, 0), // Right
+            new(0, 0), new(1, 0), new(0, 1), new(1, 1), // Front
+            new(0, 1), new(1, 1), new(0, 1), new(1, 1), // Back
+            new(0, 0), new(1, 0), new(0, 0), new(1, 0), // Top
+            new(0, 0), new(0, 1), new(1, 1), new(1, 0), // Bottom
+            new(0, 0), new(0, 1), new(1, 1), new(1, 0), // Left
+            new(0, 0), new(0, 1), new(1, 1), new(1, 0), // Right
         };
 
         private void Awake()
