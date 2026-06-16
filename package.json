@@ -2,7 +2,7 @@
   "name": "com.zigurous.graphics",
   "version": "0.4.0",
   "displayName": "Graphics Utils",
-  "description": "The Graphics Utils package provides scripts and utilities for graphics and rendering purposes in Unity projects.",
+  "description": "A utility library for handling graphics and rendering in Unity projects.",
   "unity": "2022.3",
   "repository": "https://github.com/zigurous/unity-graphics-utils",
   "documentationUrl": "https://docs.zigurous.com/com.zigurous.graphics",
