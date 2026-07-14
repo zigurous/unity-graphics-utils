@@ -4,9 +4,9 @@ using UnityEngine.Rendering;
 namespace Zigurous.Graphics
 {
     /// <summary>
-    /// Utility class to generate procedural meshes at runtime.
+    /// Utility class to generate procedural terrain meshes at runtime.
     /// </summary>
-    public static class MeshGenerator
+    public static class TerrainMeshGenerator
     {
         /// <summary>
         /// A delegate function to calculate the vertex for a given point.
