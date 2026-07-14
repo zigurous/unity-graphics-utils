@@ -52,7 +52,7 @@ namespace Zigurous.Graphics
         /// <returns>The new cube mesh.</returns>
         public Mesh Create()
         {
-            Mesh mesh = CubeMesh.sharedMesh.Copy();
+            Mesh mesh = CubeMesh.shared.Copy();
             mesh.name = "Cube-3";
             mesh.subMeshCount = 3;
             mesh.SetTriangles(trianglesX, 0);

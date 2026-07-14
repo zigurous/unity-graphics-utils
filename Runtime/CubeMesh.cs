@@ -17,7 +17,7 @@ namespace Zigurous.Graphics
         /// A cube mesh that can be shared across many objects (Read only).
         /// </summary>
         /// <returns>A shared cube mesh instance.</returns>
-        public static Mesh sharedMesh
+        public static Mesh shared
         {
             get
             {
@@ -119,7 +119,7 @@ namespace Zigurous.Graphics
         /// <returns>The new cube mesh.</returns>
         public Mesh Create()
         {
-            Mesh mesh = CubeMesh.sharedMesh.Copy();
+            Mesh mesh = CubeMesh.shared.Copy();
             mesh.name = "Cube";
             return mesh;
         }
