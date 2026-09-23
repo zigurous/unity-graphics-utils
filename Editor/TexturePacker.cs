@@ -14,10 +14,10 @@ namespace Zigurous.Graphics.Editor
         private Texture2D alpha;
         private Texture2D output;
 
-        private float redDefault;
-        private float greenDefault;
-        private float blueDefault;
-        private float alphaDefault;
+        private float redDefault = 0f;
+        private float greenDefault = 1f;
+        private float blueDefault = 0f;
+        private float alphaDefault = 0.5f;
 
         private bool redInverted;
         private bool greenInverted;
