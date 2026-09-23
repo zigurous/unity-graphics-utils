@@ -1,3 +1,4 @@
+using System.IO;
 using Unity.Collections;
 using UnityEditor;
 using UnityEngine;
@@ -70,6 +71,21 @@ namespace Zigurous.Graphics.Editor
             EditorGUILayout.EndScrollView();
         }
 
+        private void SetDefaults(TexturePackerPreset preset)
+        {
+            switch (preset)
+            {
+                case TexturePackerPreset.MaskMap:
+                    redDefault = 0f;
+                    greenDefault = 1f;
+                    blueDefault = 0f;
+                    alphaDefault = 0.5f;
+                    break;
+
+                default: break;
+            }
+        }
+
         private void DrawTextureChannel(ref Texture2D texture, ref float slider, ref bool inverted, string name)
         {
             EditorGUILayout.LabelField(name, EditorStyles.boldLabel);
@@ -118,17 +134,22 @@ namespace Zigurous.Graphics.Editor
 
         private void OnButtonClick()
         {
-            PackChannels(output);
+            string assetPath = AssetDatabase.GetAssetPath(output);
+            string fullPath = Path.GetFullPath(Path.Combine(Path.GetDirectoryName(Application.dataPath), assetPath));
+            string extension = Path.GetExtension(fullPath);
+            Texture2D packed = PackChannels(output.width, output.height);
+            File.WriteAllBytes(fullPath, Encode(packed, extension));
+            EditorUtility.CopySerialized(packed, output);
             EditorUtility.SetDirty(output);
-            AssetDatabase.SaveAssetIfDirty(output);
+            AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
 
-        private void PackChannels(Texture2D mask, int mipLevel = 0)
+        private Texture2D PackChannels(int width, int height)
         {
-            int width = mask.width;
-            int height = mask.height;
             int pixelCount = width * height;
+            Texture2D packed = new(width, height, TextureFormat.RGBA32, false);
+            Color32[] pixels = new Color32[pixelCount];
 
             bool hasRed = red != null;
             bool hasGreen = green != null;
@@ -140,11 +161,10 @@ namespace Zigurous.Graphics.Editor
             byte blueDefault = (byte)Mathf.Round(this.blueDefault * 255f);
             byte alphaDefault = (byte)Mathf.Round(this.alphaDefault * 255f);
 
-            Color32[] pixels = new Color32[pixelCount];
-            NativeArray<Color32> rData = hasRed ? red.GetPixelData<Color32>(mipLevel) : default;
-            NativeArray<Color32> gData = hasGreen ? green.GetPixelData<Color32>(mipLevel) : default;
-            NativeArray<Color32> bData = hasBlue ? blue.GetPixelData<Color32>(mipLevel) : default;
-            NativeArray<Color32> aData = hasAlpha ? alpha.GetPixelData<Color32>(mipLevel) : default;
+            Color32[] rData = hasRed ? red.GetPixels32() : null;
+            Color32[] gData = hasGreen ? green.GetPixels32() : null;
+            Color32[] bData = hasBlue ? blue.GetPixels32() : null;
+            Color32[] aData = hasAlpha ? alpha.GetPixels32() : null;
 
             for (int i = 0; i < pixelCount; i++)
             {
@@ -163,23 +183,23 @@ namespace Zigurous.Graphics.Editor
                 pixels[i] = color;
             }
 
-            mask.SetPixels32(pixels, mipLevel);
-            mask.Apply();
+            packed.SetPixels32(pixels);
+            packed.Apply();
+
+            return packed;
         }
 
-        private void SetDefaults(TexturePackerPreset preset)
+        private static byte[] Encode(Texture2D texture, string fileExtension)
         {
-            switch (preset)
+            return fileExtension.ToLowerInvariant() switch
             {
-                case TexturePackerPreset.MaskMap:
-                    redDefault = 0f;
-                    greenDefault = 1f;
-                    blueDefault = 0f;
-                    alphaDefault = 0.5f;
-                    break;
-
-                default: break;
-            }
+                ".exr" => texture.EncodeToEXR(),
+                ".jpg" => texture.EncodeToJPG(),
+                ".jpeg" => texture.EncodeToJPG(),
+                ".png" => texture.EncodeToPNG(),
+                ".tga" => texture.EncodeToTGA(),
+                _ => texture.EncodeToPNG(),
+            };
         }
 
     }
